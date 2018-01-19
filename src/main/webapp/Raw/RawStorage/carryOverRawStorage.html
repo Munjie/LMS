@@ -1,0 +1,104 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>原料库结转</title>
+	<link type="text/css" href="../../css/style.css" rel="stylesheet" /> <!-- the layout css file -->
+	<link type="text/css" href="../../css/jquery.cleditor.css" rel="stylesheet" />
+	<script type='text/javascript' src='../../js/jquery-1.4.2.min.js'></script>	<!-- jquery library -->
+	<script type='text/javascript' src='../../js/jquery-ui-1.8.5.custom.min.js'></script> <!-- jquery UI -->
+	<script type='text/javascript' src='../../js/cufon-yui.js'></script> <!-- Cufon font replacement -->
+	<script type='text/javascript' src='../../js/ColaborateLight_400.font.js'></script> <!-- the Colaborate Light font -->
+	<script type='text/javascript' src='../../js/easyTooltip.js'></script> <!-- element tooltips -->
+	<script type='text/javascript' src='../../js/jquery.tablesorter.min.js'></script> <!-- tablesorter -->
+	
+	<!--[if IE 8]>
+		<script type='text/javascript' src='js/excanvas.js'></script>
+		<link rel="stylesheet" href="css/IEfix.css" type="text/css" media="screen" />
+	<![endif]--> 
+ 
+	<!--[if IE 7]>
+		<script type='text/javascript' src='js/excanvas.js'></script>
+		<link rel="stylesheet" href="css/IEfix.css" type="text/css" media="screen" />
+	<![endif]--> 
+	
+	<script type='text/javascript' src='../../js/visualize.jQuery.js'></script> <!-- visualize plugin for graphs / statistics -->
+	<script type='text/javascript' src='../../js/iphone-style-checkboxes.js'></script> <!-- iphone like checkboxes -->
+	<script type='text/javascript' src='../../js/jquery.cleditor.min.js'></script> <!-- wysiwyg editor -->
+
+	<script type='text/javascript' src='../../js/custom.js'></script> <!-- the "make them work" script -->
+</head>
+
+<body>
+				<fieldset>
+				<h1>原料库存结转</h1>
+						<p>
+							<label>上次结转时间</label>
+							<input class="sf" name="sf" type="text" value="small input field" />
+							<a class="button_link dialog_link">上次结转查询</a>	
+							<label>当前时间</label>
+							<input class="sf" name="sf" type="text" value="small input field" />
+							<a class="button_link dialog_link">当前库存结转</a>	
+						</p>
+						
+<table id="users" class="normal tablesorter">
+		<thead>
+			<tr>
+				<th>仓库编号</th>
+				<th>库位</th>
+				<th>库存日期</th>
+				<th>委托方</th>
+				<th>烟叶年度</th>
+				<th>烟叶等级</th>
+				<th>烟叶品种</th>
+				<th>烟叶产地</th>
+				<th>上期结转件数</th>
+				<th>上期结转重量</th>
+				<th>本期入库件数</th>
+				<th>本期入库重量</th>
+				<th>投料件数</th>
+				<th>投料重量</th>
+				<th>库存件数</th>
+				<th>库存重量</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Code</td>
+				<td>Location</td>
+				<td>Date/td>
+				<td>Client</td>
+				<td>tobaccoDate</td>
+				<td>tobaccoLevel</td>
+				<td>tobaccoCategory</td>
+				<td>tobaccoArea</td>
+				<td>lastCarryOverNum</td>
+				<td>lastCarryOverWeight</td>
+				<td>currentEntryNum</td>
+				<td>currentEntryWeight</td>
+				<td>rawShiftNum</td>
+				<td>rawShiftWeight</td>
+				<td>storageNum</td>
+				<td>storageWeight</td>
+				
+			</tr>
+		</tbody>
+	</table>
+	<div align="left">
+	  <ul class="paginator">
+	    <li><a href="#">Previous</a></li>
+	    <li class="current"><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	    <li><a href="#">4</a></li>
+	    <li><a href="#">5</a></li>
+	    <li><a href="#">6</a></li>
+	    <li><a href="#">7</a></li>
+	    <li><a href="#">8</a></li>
+	    <li><a href="#">9</a></li>
+	    <li><a href="#">Next</a></li>
+      </ul>
+	  </div>
+				</fieldset>
+</body>
+</html>
