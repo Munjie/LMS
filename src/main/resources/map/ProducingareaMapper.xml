@@ -9,63 +9,13 @@
   <sql id="Base_Column_List" >
     ID, NAME_, AVAILABLE
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
+    *
     from PRODUCINGAREA
-    where ID = #{id,jdbcType=DECIMAL}
+
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
-    delete from PRODUCINGAREA
-    where ID = #{id,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="com.mwj.model.Producingarea" >
-    insert into PRODUCINGAREA (ID, NAME_, AVAILABLE
-      )
-    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{available,jdbcType=CHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.mwj.model.Producingarea" >
-    insert into PRODUCINGAREA
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="name != null" >
-        NAME_,
-      </if>
-      <if test="available != null" >
-        AVAILABLE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="available != null" >
-        #{available,jdbcType=CHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mwj.model.Producingarea" >
-    update PRODUCINGAREA
-    <set >
-      <if test="name != null" >
-        NAME_ = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="available != null" >
-        AVAILABLE = #{available,jdbcType=CHAR},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mwj.model.Producingarea" >
-    update PRODUCINGAREA
-    set NAME_ = #{name,jdbcType=VARCHAR},
-      AVAILABLE = #{available,jdbcType=CHAR}
-    where ID = #{id,jdbcType=DECIMAL}
-  </update>
+
+
+
 </mapper>

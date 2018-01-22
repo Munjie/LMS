@@ -77,7 +77,13 @@
         <span class="field_desc">Field description</span>						</p>
     <p>
         <label>烟叶产地</label>
-        <input class="sf" name="producingarea" type="text"/>
+       <%-- <input class="sf" name="producingarea" type="text"/>--%>
+        <select name="producingarea" class="dropdown">
+            <option>Please select an option</option>
+            <c:forEach items="${producingareas}" var="producingareas">
+                <option value="${producingareas.id}">${producingareas.name}</option>
+            </c:forEach>
+        </select>
         <span class="field_desc">Field description</span> </p>
     <p>
         <label>烟叶等级</label>

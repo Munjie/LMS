@@ -21,7 +21,7 @@ public class RawtobaccoController {
 
         final boolean b = rawtobaccoService.addRawtobacco(record);
         if (b)
-            return "";
+            return "Raw/RawCheck/RawCheckSheet";
         else
             return "";
 

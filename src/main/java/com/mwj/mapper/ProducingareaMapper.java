@@ -2,17 +2,11 @@ package com.mwj.mapper;
 
 import com.mwj.model.Producingarea;
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface ProducingareaMapper {
-    int deleteByPrimaryKey(BigDecimal id);
 
-    int insert(Producingarea record);
+//显示烟叶产地
+   List<Producingarea>  selectByPrimaryKey();
 
-    int insertSelective(Producingarea record);
-
-    Producingarea selectByPrimaryKey(BigDecimal id);
-
-    int updateByPrimaryKeySelective(Producingarea record);
-
-    int updateByPrimaryKey(Producingarea record);
 }
