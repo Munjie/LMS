@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.RawtobaccoMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Rawtobacco" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="LEVEL_" property="level" jdbcType="DECIMAL" />
+    <result column="PRODUCINGYEAR" property="producingyear" jdbcType="DECIMAL" />
+    <result column="PRODUCINGAREA" property="producingarea" jdbcType="DECIMAL" />
+    <result column="TOBACCOCATEGORY" property="tobaccocategory" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LEVEL_, PRODUCINGYEAR, PRODUCINGAREA, TOBACCOCATEGORY
+  </sql>
+
+ <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from RAWTOBACCO
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+
+ <insert id="addRawtobacco" parameterType="com.mwj.model.Rawtobacco" >
+    insert into RAWTOBACCO (ID, LEVEL_, PRODUCINGYEAR,PRODUCINGAREA, TOBACCOCATEGORY)
+    values (TOC_SEQ.NEXTVAL, #{level}, #{producingyear},
+      #{producingarea}, #{tobaccocategory})
+  </insert>
+
+
+</mapper>

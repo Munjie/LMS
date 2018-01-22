@@ -23,6 +23,9 @@
              <value>classpath:map/UsersMapper.xml</value>
              <value>classpath:map/TobaccolevelMapper.xml</value>
              <value>classpath:map/TobaccocategoryMapper.xml</value>
+             <value>classpath:map/RawtobaccoMapper.xml</value>
+             <value>classpath:map/RawcheckdetailMapper.xml</value>
+             <value>classpath:map/ProducingareaMapper.xml</value>
          </array>
         </property>
     </bean>

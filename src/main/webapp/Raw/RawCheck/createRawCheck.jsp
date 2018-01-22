@@ -40,6 +40,7 @@
 </head>
 
 <body>
+<form action="addRawtobacco.do" method="post">
 <fieldset>
     <h1>新增抽检</h1>
     <p>
@@ -72,27 +73,27 @@
     </p>
     <p>
         <label>烟叶年度</label>
-        <input class="sf" name="sf" type="text" value="small input field" />
+        <input class="sf" name="producingyear" type="text"  />
         <span class="field_desc">Field description</span>						</p>
     <p>
         <label>烟叶产地</label>
-        <input class="sf" name="sf2" type="text" value="small input field" />
+        <input class="sf" name="producingarea" type="text"/>
         <span class="field_desc">Field description</span> </p>
     <p>
         <label>烟叶等级</label>
-        <select name="select" class="dropdown">
+        <select name="level" class="dropdown">
             <option>Please select an option</option>
             <c:forEach items="${tobaccoleve}" var="to">
-                <option>${to.levelname}</option>
+                <option value="${to.levelid}">${to.levelname}</option>
             </c:forEach>
         </select>
     </p>
     <p>
         <label>烟叶品种</label>
-        <select name="select" class="dropdown">
+        <select name="tobaccocategory" class="dropdown">
             <option>Please select an option</option>
             <c:forEach items="${tobaccocategories}" var="tobaccocategories">
-                <option>${tobaccocategories.name}</option>
+                <option value="${tobaccocategories.id}">${tobaccocategories.name}</option>
             </c:forEach>
         </select>
     </p>
@@ -153,6 +154,7 @@
     </div>
     <p><input class="button" type="submit" value="Submit" /> <input class="button" type="reset" value="Reset" /></p>
 </fieldset>
+</form>
 </body>
 </html>
 

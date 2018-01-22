@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.RawcheckdetailMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Rawcheckdetail" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="CHECKINFO" property="checkinfo" jdbcType="DECIMAL" />
+    <result column="SEQUENCE_" property="sequence" jdbcType="DECIMAL" />
+    <result column="CHECKWEIGHT" property="checkweight" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    ID, CHECKINFO, SEQUENCE_, CHECKWEIGHT
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from RAWCHECKDETAIL
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+
+  <insert id="addRawcheckdetail" parameterType="com.mwj.model.Rawcheckdetail" >
+    insert into RAWCHECKDETAIL (ID, CHECKINFO, SEQUENCE_, CHECKWEIGHT)
+    values (#{id}, #{checkinfo}, #{sequence},#{checkweight})
+  </insert>
+
+
+
+</mapper>
