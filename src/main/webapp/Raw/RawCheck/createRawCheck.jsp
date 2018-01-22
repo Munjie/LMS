@@ -60,9 +60,9 @@
         <label>委托方</label>
         <select name="dropdown" class="dropdown">
             <option>Please select an option</option>
-            <option>Upload</option>
-            <option>Change</option>
-            <option>Remove</option>
+            <c:forEach items="${companies}" var="co">
+                <option>${co.name}</option>
+            </c:forEach>
         </select>
     </p>
     <p>
@@ -82,18 +82,18 @@
         <label>烟叶等级</label>
         <select name="select" class="dropdown">
             <option>Please select an option</option>
-            <option>Upload</option>
-            <option>Change</option>
-            <option>Remove</option>
+            <c:forEach items="${tobaccoleve}" var="to">
+                <option>${to.levelname}</option>
+            </c:forEach>
         </select>
     </p>
     <p>
         <label>烟叶品种</label>
         <select name="select" class="dropdown">
             <option>Please select an option</option>
-            <option>Upload</option>
-            <option>Change</option>
-            <option>Remove</option>
+            <c:forEach items="${tobaccocategories}" var="tobaccocategories">
+                <option>${tobaccocategories.name}</option>
+            </c:forEach>
         </select>
     </p>
     <p>
