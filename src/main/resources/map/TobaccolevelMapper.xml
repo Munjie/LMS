@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.TobaccolevelMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Tobaccolevel" >
+    <id column="LEVELID" property="levelid" jdbcType="DECIMAL" />
+    <result column="BIGLEVELCODE" property="biglevelcode" jdbcType="VARCHAR" />
+    <result column="COLORCODE" property="colorcode" jdbcType="VARCHAR" />
+    <result column="ENGLISHCODE" property="englishcode" jdbcType="VARCHAR" />
+    <result column="LEVELCODE" property="levelcode" jdbcType="VARCHAR" />
+    <result column="LEVELNAME_" property="levelname" jdbcType="VARCHAR" />
+    <result column="PARTCODE" property="partcode" jdbcType="VARCHAR" />
+    <result column="SCALECODE" property="scalecode" jdbcType="VARCHAR" />
+    <result column="TYPE_" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select 
+    *
+    from TOBACCOLEVEL
+
+  </select>
+
+
+
+</mapper>

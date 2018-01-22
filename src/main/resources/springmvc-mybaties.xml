@@ -20,6 +20,8 @@
         <property name="mapperLocations">
          <array>
              <value>classpath:map/CompanyMapper.xml</value>
+             <value>classpath:map/UsersMapper.xml</value>
+             <value>classpath:map/TobaccolevelMapper.xml</value>
          </array>
         </property>
     </bean>

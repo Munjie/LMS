@@ -37,7 +37,7 @@
         <div id="box">
             <form action="main.jsp" method="POST">
                 <div class="one_half">
-                    <p>username <input name="username" value="username" class="field" onBlur="if (jQuery(this).val() == &quot;&quot;) { jQuery(this).val(&quot;username&quot;); }" onClick="jQuery(this).val(&quot;&quot;);" /></p>
+                    <p>username <input name="username" value="username" class="field" onBlur="if (jQuery(this).val() == &quot;&quot;) { jQuery(this).val(&quot;username&quot;); }"/></p>
                     <p><input type="checkbox" class="iphone" /><label class="fix">Remember me</label></p>
                 </div>
                 <div class="one_half last">
