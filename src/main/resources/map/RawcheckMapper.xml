@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.RawcheckMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Rawcheck" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="DELIVERYCOMPANY" property="deliverycompany" jdbcType="DECIMAL" />
+    <result column="CLIENT" property="client" jdbcType="DECIMAL" />
+    <result column="CARNUM" property="carnum" jdbcType="VARCHAR" />
+    <result column="RAWTOBACCO" property="rawtobacco" jdbcType="DECIMAL" />
+    <result column="CHECKNUM" property="checknum" jdbcType="VARCHAR" />
+    <result column="CHECKDATE" property="checkdate" jdbcType="TIMESTAMP" />
+    <result column="OPERATOR_" property="operator" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CODE, DELIVERYCOMPANY, CLIENT, CARNUM, RAWTOBACCO, CHECKNUM, CHECKDATE, OPERATOR_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from RAWCHECK
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <insert id="addRocheck" parameterType="com.mwj.model.Rawcheck" >
+    insert into RAWCHECK (ID, CODE, DELIVERYCOMPANY, 
+      CLIENT, CARNUM, RAWTOBACCO, 
+      CHECKNUM, CHECKDATE, OPERATOR_
+      )
+    values (#{ROWCHK_SEQ.NEXTVAL,jdbcType=DECIMAL}, #{code,jdbcType=VARCHAR}, #{deliverycompany,jdbcType=DECIMAL},
+      #{client,jdbcType=DECIMAL}, #{carnum,jdbcType=VARCHAR}, #{rawtobacco,jdbcType=DECIMAL}, 
+      #{checknum,jdbcType=VARCHAR}, #{checkdate,jdbcType=TIMESTAMP}, #{operator,jdbcType=DECIMAL}
+      )
+  </insert>
+
+
+</mapper>

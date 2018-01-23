@@ -19,14 +19,15 @@
     where ID = #{id,jdbcType=DECIMAL}
   </select>
 
- <insert id="addRawtobacco"  parameterType="com.mwj.model.Rawtobacco" useGeneratedKeys="true" keyProperty="ID"  >
+ <insert id="addRawtobacco"  parameterType="com.mwj.model.Rawtobacco" >
+     <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer" >
+         select TOC_SEQ.NEXTVAL+1 FROM  dual
+     </selectKey>
     insert into RAWTOBACCO (ID, LEVEL_, PRODUCINGYEAR,PRODUCINGAREA, TOBACCOCATEGORY)
     values (TOC_SEQ.NEXTVAL, #{level}, #{producingyear},
       #{producingarea}, #{tobaccocategory})
-     <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="ID">
-         SELECT ID FROM RAWTOBACCO
-     </selectKey>
-  </insert>
+
+ </insert>
 
 
 </mapper>

@@ -15,14 +15,14 @@ public class RawtobaccoDao {
 
     //新增原料抽检详细表(烟叶等级和烟叶年度等)
     public  boolean addRawtobacco(Rawtobacco record){
-        int ins = Integer.parseInt(rawtobaccoMapper.addRawtobacco(record) + "");
+       /* int ins = Integer.parseInt(rawtobaccoMapper.addRawtobacco(record) + "");
         int id = record.getId();
         System.out.println(id);
-        System.out.println(ins);
-       /* final int i = rawtobaccoMapper.addRawtobacco(record);
+        System.out.println(ins);*/
+        final int i = rawtobaccoMapper.addRawtobacco(record);
 
-       */
-        return  ins >  0;
+
+        return  i >  0;
 
 
     }

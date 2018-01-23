@@ -10,7 +10,10 @@
 
   <select id="login" resultType="java.lang.Integer" parameterType="com.mwj.model.Users" >
     select count(1) from USERS where  USERNAME = #{username} AND PASSWORD = #{password}
+  </select>
 
+  <select id="showUser" resultMap="BaseResultMap">
+    select * from USERS
   </select>
 
 </mapper>

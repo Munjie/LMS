@@ -3,35 +3,35 @@ package com.mwj.model;
 import java.math.BigDecimal;
 
 public class Rawcheckdetail {
-    private BigDecimal id;
+    private int id;
 
-    private BigDecimal checkinfo;
+    private int checkinfo;
 
-    private BigDecimal sequence;
+    private int sequence;
 
     private String checkweight;
 
-    public BigDecimal getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public BigDecimal getCheckinfo() {
+    public int getCheckinfo() {
         return checkinfo;
     }
 
-    public void setCheckinfo(BigDecimal checkinfo) {
+    public void setCheckinfo(int checkinfo) {
         this.checkinfo = checkinfo;
     }
 
-    public BigDecimal getSequence() {
+    public int getSequence() {
         return sequence;
     }
 
-    public void setSequence(BigDecimal sequence) {
+    public void setSequence(int sequence) {
         this.sequence = sequence;
     }
 

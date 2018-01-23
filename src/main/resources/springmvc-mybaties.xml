@@ -26,6 +26,7 @@
              <value>classpath:map/RawtobaccoMapper.xml</value>
              <value>classpath:map/RawcheckdetailMapper.xml</value>
              <value>classpath:map/ProducingareaMapper.xml</value>
+             <value>classpath:map/RawcheckMapper.xml</value>
          </array>
         </property>
     </bean>

@@ -15,13 +15,14 @@
     <title>新增抽检</title>
     <link type="text/css" href="../../css/style.css" rel="stylesheet" /> <!-- the layout css file -->
     <link type="text/css" href="../../css/jquery.cleditor.css" rel="stylesheet" />
-    <script type='text/javascript' src='../../js/jquery-1.4.2.min.js'></script>	<!-- jquery library -->
+   <script type='text/javascript' src='../../js/jquery-1.4.2.min.js'></script>	<!-- jquery library -->
     <script type='text/javascript' src='../../js/jquery-ui-1.8.5.custom.min.js'></script> <!-- jquery UI -->
     <script type='text/javascript' src='../../js/cufon-yui.js'></script> <!-- Cufon font replacement -->
     <script type='text/javascript' src='../../js/ColaborateLight_400.font.js'></script> <!-- the Colaborate Light font -->
     <script type='text/javascript' src='../../js/easyTooltip.js'></script> <!-- element tooltips -->
     <script type='text/javascript' src='../../js/jquery.tablesorter.min.js'></script> <!-- tablesorter -->
-
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/addRawCheck.js"></script>
+   <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.0.js"></script>--%>
     <!--[if IE 8]>
     <script type='text/javascript' src='js/excanvas.js'></script>
     <link rel="stylesheet" href="css/IEfix.css" type="text/css" media="screen" />
@@ -31,26 +32,24 @@
     <script type='text/javascript' src='js/excanvas.js'></script>
     <link rel="stylesheet" href="css/IEfix.css" type="text/css" media="screen" />
     <![endif]-->
-
     <script type='text/javascript' src='../../js/visualize.jQuery.js'></script> <!-- visualize plugin for graphs / statistics -->
     <script type='text/javascript' src='../../js/iphone-style-checkboxes.js'></script> <!-- iphone like checkboxes -->
     <script type='text/javascript' src='../../js/jquery.cleditor.min.js'></script> <!-- wysiwyg editor -->
-
     <script type='text/javascript' src='../../js/custom.js'></script> <!-- the "make them work" script -->
 </head>
 
 <body>
-<form action="addRawtobacco.do" method="post">
+<form <%--action="addRawtobacco.do" method="post"--%> id="rawform">
 <fieldset>
     <h1>新增抽检</h1>
     <p>
         <label>抽检单号</label>
-        <input class="sf" name="sf" type="text" value="small input field" />
+        <input class="sf" name="checknum" type="text" value="small input field" />
         <span class="field_desc">Field description</span>
     </p>
     <p>
         <label>发货单位</label>
-        <select name="dropdown" class="dropdown">
+        <select name="deliverycompany" class="dropdown">
             <option>Please select an option</option>
             <c:forEach items="${companies}" var="co">
             <option>${co.name}</option>
@@ -59,7 +58,7 @@
     </p>
     <p>
         <label>委托方</label>
-        <select name="dropdown" class="dropdown">
+        <select name="client" class="dropdown">
             <option>Please select an option</option>
             <c:forEach items="${companies}" var="co">
                 <option>${co.name}</option>
@@ -68,7 +67,7 @@
     </p>
     <p>
         <label>车牌号</label>
-        <input class="sf" name="sf" type="text" value="small input field" />
+        <input class="sf" name="carnum" type="text" value="small input field" />
         <span class="field_desc">Field description</span>
     </p>
     <p>
@@ -105,7 +104,13 @@
     </p>
     <p>
         <label>抽检员</label>
-        <input class="sf" name="sf" type="text" value="small input field" />
+      <%--  <input class="sf" name="sf" type="text" value="small input field" />--%>
+        <select name="name" class="dropdown">
+            <option>Please select an option</option>
+            <c:forEach items="${users}" var="users">
+                <option value="${users.id}">${users.name}</option>
+            </c:forEach>
+        </select>
         <span class="field_desc">Field description</span>
     </p>
     <p>
@@ -158,7 +163,7 @@
         <a href="#">下一页</a>
         <a href="#">尾页</a>
     </div>
-    <p><input class="button" type="submit" value="Submit" /> <input class="button" type="reset" value="Reset" /></p>
+    <p><%--<input class="button" type="submit" value="Submit" />--%> <input class="button" type="button" onclick="addRaw()" value="Submit"><input class="button" type="reset" value="Reset" /></p>
 </fieldset>
 </form>
 </body>

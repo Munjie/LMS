@@ -3,7 +3,7 @@ package com.mwj.model;
 import java.math.BigDecimal;
 
 public class Users {
-    private BigDecimal id;
+    private int id;
 
     private String name;
 
@@ -11,11 +11,11 @@ public class Users {
 
     private String password;
 
-    public BigDecimal getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(int id) {
         this.id = id;
     }
 

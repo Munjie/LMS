@@ -1,14 +1,8 @@
 package com.mwj.controller;
 
 
-import com.mwj.model.Company;
-import com.mwj.model.Producingarea;
-import com.mwj.model.Tobaccocategory;
-import com.mwj.model.Tobaccolevel;
-import com.mwj.service.CompanyService;
-import com.mwj.service.ProducingareaService;
-import com.mwj.service.TobaccocategoryService;
-import com.mwj.service.TobaccolevelService;
+import com.mwj.model.*;
+import com.mwj.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +23,8 @@ public class CompanyController {
     private TobaccocategoryService tobaccocategoryService;
     @Resource
      private ProducingareaService producingareaService;
+    @Resource
+    private UserService userService;
 
 
     @RequestMapping("createRawCheck.do")
@@ -37,12 +33,14 @@ public class CompanyController {
          List<Tobaccolevel> tobaccolevels = tobaccolevelService.selectByPrimaryKey();
          List<Tobaccocategory> tobaccocategories = tobaccocategoryService.selectByPrimaryKey();
          List<Producingarea> producingareas = producingareaService.selectByPrimaryKey();
+         List<Users> users = userService.showUser();
 
 
         model.addAttribute("companies",companies);
         model.addAttribute("tobaccoleve",tobaccolevels);
         model.addAttribute("tobaccocategories",tobaccocategories);
         model.addAttribute("producingareas",producingareas);
+        model.addAttribute("users",users);
 
         System.out.println(companies.get(0).getName());
         if (companies != null)
