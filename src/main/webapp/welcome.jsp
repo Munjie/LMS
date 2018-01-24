@@ -52,7 +52,7 @@
     <ul class="dash">
 
         <li class="fade_hover tooltip" title="Write a new article">
-            <a href="Raw/RawCheck/createRawCheck.html">
+            <a href="/createRawCheck.do">
                 <img src="assets/icons/dashboard/2.png" alt="" />
                 <span>原料抽检</span>
             </a>

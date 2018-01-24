@@ -42,4 +42,14 @@ public class Rawcheckdetail {
     public void setCheckweight(String checkweight) {
         this.checkweight = checkweight == null ? null : checkweight.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Rawcheckdetail{" +
+                "id=" + id +
+                ", checkinfo=" + checkinfo +
+                ", sequence=" + sequence +
+                ", checkweight='" + checkweight + '\'' +
+                '}';
+    }
 }

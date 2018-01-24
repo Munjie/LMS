@@ -21,7 +21,7 @@
 
   <insert id="addRawcheckdetail" parameterType="com.mwj.model.Rawcheckdetail" >
     insert into RAWCHECKDETAIL (ID, CHECKINFO, SEQUENCE_, CHECKWEIGHT)
-    values (#{id}, #{checkinfo}, #{sequence},#{checkweight})
+    values (RAWCHECKDETAIL_SEQ.NEXTVAL, #{checkinfo}, #{sequence},#{checkweight})
   </insert>
 
 

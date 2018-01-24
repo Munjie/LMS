@@ -22,6 +22,7 @@
     <script type='text/javascript' src='../../js/easyTooltip.js'></script> <!-- element tooltips -->
     <script type='text/javascript' src='../../js/jquery.tablesorter.min.js'></script> <!-- tablesorter -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/addRawCheck.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/custom.js"></script>
    <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.0.js"></script>--%>
     <!--[if IE 8]>
     <script type='text/javascript' src='js/excanvas.js'></script>
@@ -39,12 +40,12 @@
 </head>
 
 <body>
-<form <%--action="addRawtobacco.do" method="post"--%> id="rawform">
+<form <%--action="addRawtobacco.do"--%> method="post" id="rawform">
 <fieldset>
     <h1>新增抽检</h1>
     <p>
         <label>抽检单号</label>
-        <input class="sf" name="checknum" type="text" value="small input field" />
+        <input class="sf" name="checknum" type="text"  />
         <span class="field_desc">Field description</span>
     </p>
     <p>
@@ -52,7 +53,7 @@
         <select name="deliverycompany" class="dropdown">
             <option>Please select an option</option>
             <c:forEach items="${companies}" var="co">
-            <option>${co.name}</option>
+            <option value="${co.id}">${co.name}</option>
             </c:forEach>
         </select>
     </p>
@@ -61,13 +62,13 @@
         <select name="client" class="dropdown">
             <option>Please select an option</option>
             <c:forEach items="${companies}" var="co">
-                <option>${co.name}</option>
+                <option value="${co.id}">${co.name}</option>
             </c:forEach>
         </select>
     </p>
     <p>
         <label>车牌号</label>
-        <input class="sf" name="carnum" type="text" value="small input field" />
+        <input class="sf" name="carnum" type="text"  />
         <span class="field_desc">Field description</span>
     </p>
     <p>
@@ -105,7 +106,7 @@
     <p>
         <label>抽检员</label>
       <%--  <input class="sf" name="sf" type="text" value="small input field" />--%>
-        <select name="name" class="dropdown">
+        <select name="operator" class="dropdown">
             <option>Please select an option</option>
             <c:forEach items="${users}" var="users">
                 <option value="${users.id}">${users.name}</option>
@@ -120,22 +121,22 @@
 
     <p><a class="button_link CRCdialog_link">添加明细</a>	</p>
     <div id="CRCdialog" title="添加明细">
-        <form>
+
             <p>
                 <label for="name">序号</label>
-                <input type="text" name="number" id="number"  />
+                <input type="text" name="sequence" id="number"  />
             </p>
             <p>
                 <label for="email">重量</label>
-                <input type="text" name="weight" id="weight" value=""  />
+                <input type="text" name="checkweight" id="weight" value=""  />
                 公斤</p>
-        </form>
+
     </div>
     <table id="users" class="fullwidth normal">
         <thead>
         <tr>
             <th>序号</th>
-            <th>抽检单号</th>
+            <th>重量</th>
             <th>操作</th>
 
         </tr>
@@ -163,7 +164,7 @@
         <a href="#">下一页</a>
         <a href="#">尾页</a>
     </div>
-    <p><%--<input class="button" type="submit" value="Submit" />--%> <input class="button" type="button" onclick="addRaw()" value="Submit"><input class="button" type="reset" value="Reset" /></p>
+    <p><input class="button" type="submit" value="Submit"  onclick="addall()"/><input class="button" type="reset" value="Reset" /></p>
 </fieldset>
 </form>
 </body>

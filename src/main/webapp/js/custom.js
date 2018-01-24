@@ -22,7 +22,24 @@ function initMenu() {
 		jQuery(this).toggleClass("current");
   });
 }
- 
+function  addall() {
+    var temp = jQuery('#rawform').serialize();
+    var temp_ser = [];
+    jQuery.post("addRawtobacco.do",temp,function (data) {
+        var  t = eval('('+data+')');
+        alert(t.msg);
+    });
+    jQuery("table input[type='text']").each(function(){
+        alert(jQuery(this).val());
+        temp_ser = jQuery(this).val();
+    });
+    jQuery.post("addRawtobacco.do",{"temp": temp_ser},function (data) {
+        var  t = eval('('+data+')');
+        alert(t.msg);
+    });
+
+}
+
  
 jQuery(document).ready(function() {
 
@@ -40,8 +57,8 @@ jQuery(document).ready(function() {
 				var number = jQuery( "#number" ),
 			weight = jQuery( "#weight" );
 				jQuery( "#users tbody" ).append( "<tr>" +
-					"<td>" + number.val() + "</td>" + 
-							"<td>" + weight.val() + "<td><a href='#' title='Edit this user' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Pencil.png' alt='' width='16' height='16' /></a><a href='#' title='Preferences' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Preferences.png' alt='' /></a><a href='#' title='Delete this user' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Trash.png' alt='' /></a></td>"+"</tr>" );
+					"<td><input type='text' style='border: none' value="+number.val()+" name='sequence'></td>" +
+							"<td><input type='text' style='border: none' value="+weight.val()+" name='checkweight'><td><a href='#' title='Edit this user' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Pencil.png' alt='' width='16' height='16' /></a><a href='#' title='Preferences' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Preferences.png' alt='' /></a><a href='#' title='Delete this user' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Trash.png' alt='' /></a></td>"+"</tr>" );
 		jQuery(".tooltip").easyTooltip({
 		xOffset: -60,
 		yOffset: 70
@@ -61,6 +78,7 @@ jQuery(document).ready(function() {
 		jQuery('#CRCdialog').dialog('open');
 		return false;
 	});
+
 	jQuery('#dialog').dialog({
 		autoOpen: false,
 		width: 650,
