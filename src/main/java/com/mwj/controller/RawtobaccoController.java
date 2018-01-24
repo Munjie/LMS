@@ -58,7 +58,7 @@ public class RawtobaccoController {
                rawcheckdetailService.addRawcheckdetail(rawcheckdetail);
        }
         if (b)
-            return "{'msg':'Add Success'}";
+            return "{'msg':'Add Successs'}";
 
            /* return "Raw/RawCheck/RawCheckSheet";*/
         else
