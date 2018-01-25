@@ -22,7 +22,7 @@ public class RawcheckController {
     final boolean b = rawcheckService.addRocheck(rawcheck);
     if (b)
 
-        return "Raw/RawCheck/RawCheckSheet";
+        return "table/RawCheckSheet";
     else
         return "";
 }

@@ -117,6 +117,7 @@
     <p>
         <label>抽检日期 </label>
         <input name="datepicker" class="datepicker" />
+        <input type="hidden" name="tempdata" id="hira"  />
     </p>
 
     <p><a class="button_link CRCdialog_link">添加明细</a>	</p>

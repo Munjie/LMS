@@ -9,16 +9,15 @@ import com.mwj.service.RawcheckdetailService;
 import com.mwj.service.RawtobaccoService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @RequestMapping("/")
 @Controller
@@ -34,36 +33,32 @@ public class RawtobaccoController {
     private RawcheckdetailService rawcheckdetailService;
 
 
-
     @InitBinder
-    public  void  bindDate(ServletRequestDataBinder requestDataBinder){
-        requestDataBinder.registerCustomEditor(Date.class,new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"),false));
+    public void bindDate(ServletRequestDataBinder requestDataBinder) {
+        requestDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), false));
     }
 
     @RequestMapping("addRawtobacco.do")
-    @ResponseBody
-    public  String addRawtobacco(Rawtobacco record, Rawcheck rawcheck, Rawcheckdetail rawcheckdetail){
+    public String addRawtobacco(Rawtobacco record, Rawcheck rawcheck, @RequestParam("tempdata") String tempdata, Model model) {
 
-
-        final boolean b = rawtobaccoService.addRawtobacco(record);
-        int i = record.getId();
-        System.out.println(i);
-        rawcheck.setRawtobacco(i);
-       if (i > 0) {
-           final boolean b1 = rawcheckService.addRocheck(rawcheck);
-           int rawcheckId = rawcheck.getId();
-           System.out.println(rawcheckId);
-           if (rawcheckId > 0)
-               rawcheckdetail.setCheckinfo(rawcheckId);
-               rawcheckdetailService.addRawcheckdetail(rawcheckdetail);
-       }
+       Rawcheckdetail rawcheckdetail = new Rawcheckdetail();
+        boolean b = rawtobaccoService.addRawtobacco(record);
+        rawcheck.setRawtobacco(record.getId());
+        boolean b1 = rawcheckService.addRocheck(rawcheck);
+        int rawcheckId = rawcheck.getId();
+        rawcheckdetail.setCheckinfo(rawcheckId);
+        String[] split = tempdata.split(",");
+        for (int i = 0; i < split.length / 2; i++) {
+            rawcheckdetail.setSequence(Integer.parseInt(split[2 * i]));
+            rawcheckdetail.setCheckweight(split[2 * i + 1]);
+            rawcheckdetailService.addRawcheckdetail(rawcheckdetail);
+        }
         if (b)
-            return "{'msg':'Add Successs'}";
-
-           /* return "Raw/RawCheck/RawCheckSheet";*/
+         return "table/RawCheckSheet";
         else
-            return "";
-
-
+            return "table/RawCheckSheet";
     }
+
+
+
 }

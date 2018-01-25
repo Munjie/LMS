@@ -23,17 +23,13 @@ function initMenu() {
   });
 }
 function  addall() {
+     var temp_ser = new Array();
+  jQuery("table input[type='text']").each(function(){
+        temp_ser.push(jQuery(this).val());
+    });
+   jQuery('#hira').val(temp_ser);
     var temp = jQuery('#rawform').serialize();
-    var temp_ser = [];
-    jQuery.post("addRawtobacco.do",temp,function (data) {
-        var  t = eval('('+data+')');
-        alert(t.msg);
-    });
-    jQuery("table input[type='text']").each(function(){
-        alert(jQuery(this).val());
-        temp_ser = jQuery(this).val();
-    });
-    jQuery.post("addRawtobacco.do",{"temp": temp_ser},function (data) {
+   jQuery.post("addRawtobacco.do",temp,function (data) {
         var  t = eval('('+data+')');
         alert(t.msg);
     });
