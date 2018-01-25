@@ -40,7 +40,7 @@
 </head>
 
 <body>
-<form <%--action="addRawtobacco.do"--%> method="post" id="rawform">
+<form action="addRawtobacco.do" method="post" id="rawform">
 <fieldset>
     <h1>新增抽检</h1>
     <p>

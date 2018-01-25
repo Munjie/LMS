@@ -24,15 +24,15 @@ function initMenu() {
 }
 function  addall() {
      var temp_ser = new Array();
-  jQuery("table input[type='text']").each(function(){
+    jQuery("table input[type='text']").each(function(){
         temp_ser.push(jQuery(this).val());
     });
    jQuery('#hira').val(temp_ser);
-    var temp = jQuery('#rawform').serialize();
+    /*var temp = jQuery('#rawform').serialize();
    jQuery.post("addRawtobacco.do",temp,function (data) {
-        var  t = eval('('+data+')');
-        alert(t.msg);
-    });
+       /!* var  t = eval('('+data+')');
+        alert(t.msg);*!/
+    });*/
 
 }
 

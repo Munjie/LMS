@@ -53,10 +53,9 @@ public class RawtobaccoController {
             rawcheckdetail.setCheckweight(split[2 * i + 1]);
             rawcheckdetailService.addRawcheckdetail(rawcheckdetail);
         }
-        if (b)
+         model.addAttribute("",record);
          return "table/RawCheckSheet";
-        else
-            return "table/RawCheckSheet";
+
     }
 
 

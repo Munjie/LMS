@@ -16,16 +16,7 @@ public class RawcheckController {
     private RawcheckService rawcheckService;
 
 
-@RequestMapping("addRawtobaccoooo.do")
-    public String add(Rawcheck rawcheck){
 
-    final boolean b = rawcheckService.addRocheck(rawcheck);
-    if (b)
-
-        return "table/RawCheckSheet";
-    else
-        return "";
-}
 
 
 }
