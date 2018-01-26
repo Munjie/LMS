@@ -2,6 +2,8 @@ package com.mwj.mapper;
 
 import com.mwj.model.Rawcheck;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 public interface RawcheckMapper {
 
@@ -12,6 +14,8 @@ public interface RawcheckMapper {
 
 
     Rawcheck selectByPrimaryKey(BigDecimal id);
+
+    List<Map> showRocheck();
 
 
 }
