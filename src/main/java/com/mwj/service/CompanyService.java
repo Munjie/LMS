@@ -23,4 +23,18 @@ public class CompanyService {
         return  companyDao.showAllCompany();
     }
 
+    //显示委托方
+    public  Company  showClient(int id){
+
+        return companyDao.showClient(id);
+
+    }
+    //显示发货方
+    public Company showDeliver(int id){
+
+        return companyDao.showDeliver(id);
+
+
+    }
+
 }

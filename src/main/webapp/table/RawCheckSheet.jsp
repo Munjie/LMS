@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -34,22 +37,24 @@
 <form name="form1" method="post" action="">
     <p align="center" class="STYLE1">抽检单</p>
     <table width="900"  align="center">
+        <c:forEach items="${rawchecks}" var="rawchecks">
         <tr>
-            <td width="300" height="44">抽检单号：</td>
-            <td width="300">抽检人：</td>
-            <td width="300">抽检日期：</td>
+            <td width="300" height="44">抽检单号：${rawchecks.checknum}</td>
+            <td width="300">抽检人：${rawchecks.operator}</td>
+            <td width="300">抽检日期：<fmt:formatDate  value="${rawchecks.checkdate}" pattern="yyyy-MM-dd" ></fmt:formatDate></td>
         </tr>
         <tr>
-            <td width="300" height="44">委托方：</td>
-            <td width="300">发货单位：</td>
-            <td width="300">车牌号：</td>
+            <td width="300" height="44">委托方：${clientName}</td>
+            <td width="300">发货单位：${deliverName}</td>
+            <td width="300">车牌号：${rawchecks.carnum}</td>
         </tr>
         <tr>
-            <td width="225" height="45">烟草品种:</td>
-            <td width="225" height="45">烟草产地:</td>
-            <td width="225" height="45">烟草年度:</td>
-            <td width="225" height="45">烟草等级:</td>
+            <td width="225" height="45">烟草品种:${rawchecks.rawtobacco}</td>
+            <td width="225" height="45">烟草产地:${rawchecks.rawtobacco}</td>
+            <td width="225" height="45">烟草年度:${rawchecks.rawtobacco}</td>
+            <td width="225" height="45">烟草等级:${rawchecks.rawtobacco}</td>
         </tr>
+        </c:forEach>
     </table>
     <table width="910" height="193" border="1" align="center" class="table" cellspacing="0" bordercolor="#000000">
         <tr>

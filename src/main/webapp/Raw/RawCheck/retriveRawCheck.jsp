@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -42,13 +44,17 @@
     <h1>查询抽检单</h1>
     <p>
         <label>抽检单号</label>
-        <input class="sf" name="sf" type="text" value="small input field" />
+        <form action="../checknum.do" method="post">
+        <input class="sf" name="checknum" type="text"  />
         <span class="field_desc">Field description</span>
         <a class="button_link dialog_link">查询</a>
+         <input type="submit" value="ok">
+        </form>
     </p>
     <table id="t1" class="normal fullwidth tablesorter">
         <tbody>
-        <tr><td>抽检单号</td><td></td></tr>
+        <c:forEach items="${maps}" var="map">
+        <tr><td>抽检单号</td><td>${map.checknum}</td></tr>
         <tr><td>发货单位</td><td></td></tr>
         <tr><td>委托方</td><td></td></tr>
         <tr><td>车牌号</td><td></td></tr>
@@ -58,6 +64,7 @@
         <tr><td>烟叶品种</td><td></td></tr>
         <tr><td>抽检员</td><td></td></tr>
         <tr><td>抽检日期</td><td></td></tr>
+        </c:forEach>
         </tbody>
     </table>
 

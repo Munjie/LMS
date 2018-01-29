@@ -3,6 +3,7 @@ package com.mwj.dao;
 
 import com.mwj.mapper.CompanyMapper;
 import com.mwj.model.Company;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -21,6 +22,17 @@ public class CompanyDao {
 
         return  companyMapper.showAllCompany();
     }
+    //显示委托方
+    public  Company  showClient(int id){
 
+        return companyMapper.showClient(id);
+
+    }
+    //显示发货方
+    public  Company showDeliver(int id){
+
+   return companyMapper.showDeliver(id);
+
+    }
 
 }

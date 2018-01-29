@@ -1,9 +1,11 @@
 package com.mwj.controller;
 
 
+import com.mwj.model.Company;
 import com.mwj.model.Rawcheck;
 import com.mwj.model.Rawcheckdetail;
 import com.mwj.model.Rawtobacco;
+import com.mwj.service.CompanyService;
 import com.mwj.service.RawcheckService;
 import com.mwj.service.RawcheckdetailService;
 import com.mwj.service.RawtobaccoService;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RequestMapping("/")
 @Controller
@@ -31,6 +34,8 @@ public class RawtobaccoController {
     private RawcheckService rawcheckService;
     @Resource
     private RawcheckdetailService rawcheckdetailService;
+    @Resource
+    private CompanyService companyService;
 
 
     @InitBinder
@@ -40,7 +45,6 @@ public class RawtobaccoController {
 
     @RequestMapping("addRawtobacco.do")
     public String addRawtobacco(Rawtobacco record, Rawcheck rawcheck, @RequestParam("tempdata") String tempdata, Model model) {
-
        Rawcheckdetail rawcheckdetail = new Rawcheckdetail();
         boolean b = rawtobaccoService.addRawtobacco(record);
         rawcheck.setRawtobacco(record.getId());
@@ -54,7 +58,25 @@ public class RawtobaccoController {
             rawcheckdetailService.addRawcheckdetail(rawcheckdetail);
         }
          model.addAttribute("",record);
-         return "table/RawCheckSheet";
+        final List<Rawcheck> rawchecks = rawcheckService.showRawChcekById(rawcheckId);
+        int client = 0;
+        int deliverycompany = 0;
+
+        for (Rawcheck rawcheck1 : rawchecks){
+
+          client = rawcheck1.getClient();
+          deliverycompany = rawcheck1.getDeliverycompany();
+        }
+        Company  company = companyService.showClient(client);
+        Company company1 = companyService.showDeliver(deliverycompany);
+
+        String clientName = company.getName();
+        String deliverName = company1.getName();
+
+         model.addAttribute("clientName",clientName);
+         model.addAttribute("deliverName",deliverName);
+         model.addAttribute("rawchecks",rawchecks);
+        return "table/RawCheckSheet";
 
     }
 

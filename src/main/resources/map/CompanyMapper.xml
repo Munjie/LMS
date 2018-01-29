@@ -8,7 +8,9 @@
     <result column="TYPE_" property="type" jdbcType="VARCHAR" />
     <result column="AVAILABLE" property="available" jdbcType="VARCHAR" />
   </resultMap>
-
+  <sql id="Base_Column_List" >
+    ID, CODE, NAME_, TYPE_, AVAILABLE
+  </sql>
   <select id="showAllCompany" resultMap="BaseResultMap">
     select * from COMPANY
   </select>
@@ -21,4 +23,12 @@
       AVAILABLE = #{available,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=DECIMAL}
   </update>
+  <select id="showClient" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+   SELECT   ID, CODE, NAME_, TYPE_, AVAILABLE   FROM COMPANY WHERE ID = #{showClientId}
+
+  </select>
+  <select id="showDeliver" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT   ID, CODE, NAME_, TYPE_, AVAILABLE FROM COMPANY WHERE ID = #{showDeliverId}
+  </select>
+
 </mapper>

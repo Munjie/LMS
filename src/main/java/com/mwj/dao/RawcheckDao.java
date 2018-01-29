@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import sun.dc.pr.PRError;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class RawcheckDao {
@@ -22,6 +24,20 @@ public class RawcheckDao {
 
          return  insert > 0;
      }
+
+    //查询抽检信息
+   public List<Rawcheck> showRawChcekById(int id){
+
+        final List<Rawcheck> rawchecks = rawcheckMapper.showRawChcekById(id);
+        return  rawchecks;
+    }
+
+    //根据抽检单号查询信息
+    public  List<Map> displayRawcheckByChecknum(String checknum){
+
+       return  rawcheckMapper.displayRawcheckByChecknum(checknum);
+    }
+
 
 
 }

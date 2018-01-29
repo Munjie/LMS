@@ -15,7 +15,12 @@ public interface RawcheckMapper {
 
     Rawcheck selectByPrimaryKey(BigDecimal id);
 
-    List<Map> showRocheck();
+
+    //查询抽检信息
+    List<Rawcheck> showRawChcekById(int id);
+
+    //根据抽检单号查询信息
+    List<Map> displayRawcheckByChecknum(String checknum);
 
 
 }
