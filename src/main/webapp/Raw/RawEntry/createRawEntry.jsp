@@ -130,6 +130,18 @@
                 <input type="text" name="email3" id="label2" value=""  />
             </p>
             <p>
+                <label for="label2">烟叶等级 </label>
+                <input type="text" name="email3" id="label3" value=""  />
+            </p>
+            <p>
+                <label for="label2">烟叶品种 </label>
+                <input type="text" name="email3" id="label4" value=""  />
+            </p>
+            <p>
+                <label for="label2">重量 </label>
+                <input type="text" name="email3" id="label5" value=""  />
+            </p>
+            <p>
                 <label for="password"></label>
             </p>
         </form>
