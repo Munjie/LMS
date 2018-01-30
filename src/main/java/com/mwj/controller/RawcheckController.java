@@ -1,7 +1,6 @@
 package com.mwj.controller;
 
 
-import com.mwj.model.Rawcheck;
 import com.mwj.service.RawcheckService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +19,11 @@ public class RawcheckController {
     private RawcheckService rawcheckService;
 
 @RequestMapping("checknum.do")
-public String display(@RequestParam("checknum") String checknum, Model model){
+public String display(String checknum, Model model){
 
     final List<Map> maps = rawcheckService.displayRawcheckByChecknum(checknum);
     model.addAttribute("maps",maps);
-    return  "Raw/RawCheck/retriveRawCheck";
+    return "Raw/RawCheck/retriveRawCheck";
 
 
 }

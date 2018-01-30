@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.RawentryMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Rawentry" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ENTRYNUM" property="entrynum" jdbcType="VARCHAR" />
+    <result column="ENTRYDATE" property="entrydate" jdbcType="TIMESTAMP" />
+    <result column="DELIVERYCOMPANY" property="deliverycompany" jdbcType="DECIMAL" />
+    <result column="CLIENT" property="client" jdbcType="DECIMAL" />
+    <result column="CARNUM" property="carnum" jdbcType="VARCHAR" />
+    <result column="OPERATOR_" property="operator" jdbcType="DECIMAL" />
+    <result column="STORAGELOCATIONID" property="storagelocationid" jdbcType="DECIMAL" />
+    <result column="PRODUCINGYEAR" property="producingyear" jdbcType="DECIMAL" />
+    <result column="PRODUCINGAREA" property="producingarea" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ENTRYNUM, ENTRYDATE, DELIVERYCOMPANY, CLIENT, CARNUM, OPERATOR_, STORAGELOCATIONID, 
+    PRODUCINGYEAR, PRODUCINGAREA
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from RAWENTRY
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+
+  <insert id="addRawentry" parameterType="com.mwj.model.Rawentry" >
+    insert into RAWENTRY (ID, ENTRYNUM, ENTRYDATE, 
+      DELIVERYCOMPANY, CLIENT, CARNUM, 
+      OPERATOR_, STORAGELOCATIONID, PRODUCINGYEAR, 
+      PRODUCINGAREA)
+    values (#{id,jdbcType=DECIMAL}, #{entrynum,jdbcType=VARCHAR}, #{entrydate,jdbcType=TIMESTAMP}, 
+      #{deliverycompany,jdbcType=DECIMAL}, #{client,jdbcType=DECIMAL}, #{carnum,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=DECIMAL}, #{storagelocationid,jdbcType=DECIMAL}, #{producingyear,jdbcType=DECIMAL}, 
+      #{producingarea,jdbcType=DECIMAL})
+  </insert>
+
+</mapper>

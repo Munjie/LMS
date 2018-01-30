@@ -27,6 +27,8 @@
              <value>classpath:map/RawcheckdetailMapper.xml</value>
              <value>classpath:map/ProducingareaMapper.xml</value>
              <value>classpath:map/RawcheckMapper.xml</value>
+             <value>classpath:map/RawentryMapper.xml</value>
+             <value>classpath:map/StoragelocationMapper.xml</value>
          </array>
         </property>
     </bean>

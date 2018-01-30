@@ -22,5 +22,8 @@ public interface RawcheckMapper {
     //根据抽检单号查询信息
     List<Map> displayRawcheckByChecknum(String checknum);
 
+    //根据抽检ID查询信息
+    Map displayRawcheckByCheckId(int checkId);
+
 
 }

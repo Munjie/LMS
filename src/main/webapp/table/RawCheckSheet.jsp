@@ -37,50 +37,41 @@
 <form name="form1" method="post" action="">
     <p align="center" class="STYLE1">抽检单</p>
     <table width="900"  align="center">
-        <c:forEach items="${rawchecks}" var="rawchecks">
+
         <tr>
-            <td width="300" height="44">抽检单号：${rawchecks.checknum}</td>
-            <td width="300">抽检人：${rawchecks.operator}</td>
-            <td width="300">抽检日期：<fmt:formatDate  value="${rawchecks.checkdate}" pattern="yyyy-MM-dd" ></fmt:formatDate></td>
+            <td width="300" height="44">抽检单号：${map.CHECKNUM}</td>
+            <td width="300">抽检人：${map.OPERATOR_}</td>
+            <td width="300">抽检日期：<fmt:formatDate  value="${map.CHECKDATE}" pattern="yyyy-MM-dd" ></fmt:formatDate></td>
         </tr>
         <tr>
-            <td width="300" height="44">委托方：${clientName}</td>
-            <td width="300">发货单位：${deliverName}</td>
-            <td width="300">车牌号：${rawchecks.carnum}</td>
+            <td width="300" height="44">委托方：${map.CLIENT}</td>
+            <td width="300">发货单位：${map.DELIVERYCOM}</td>
+            <td width="300">车牌号：${map.CARNUM}</td>
         </tr>
         <tr>
-            <td width="225" height="45">烟草品种:${rawchecks.rawtobacco}</td>
-            <td width="225" height="45">烟草产地:${rawchecks.rawtobacco}</td>
-            <td width="225" height="45">烟草年度:${rawchecks.rawtobacco}</td>
-            <td width="225" height="45">烟草等级:${rawchecks.rawtobacco}</td>
+            <td width="225" height="45">烟草品种:${map.TOBACCOCATEGORY}</td>
+            <td width="225" height="45">烟草产地:${map.PROCEDUREAREA}</td>
+            <td width="225" height="45">烟草年度:${map.PROCEDUREYEAR}</td>
+            <td width="225" height="45">烟草等级:${map.LEVELNAME}</td>
         </tr>
-        </c:forEach>
+
     </table>
     <table width="910" height="193" border="1" align="center" class="table" cellspacing="0" bordercolor="#000000">
         <tr>
             <td width="195"><div align="center">序号</div></td>
             <td width="705"><div align="center">抽重</div></td>
         </tr>
+     <c:forEach items="${list}" var="list">
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>${list.sequence}</td>
+            <td>${list.checkweight}</td>
         </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
+     </c:forEach>
         <tr>
             <td><div align="center">平均重量</div></td>
             <td><br></td>
         </tr>
+
     </table>
 </form>
 

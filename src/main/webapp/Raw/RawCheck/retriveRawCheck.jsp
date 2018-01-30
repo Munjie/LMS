@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -44,26 +45,26 @@
     <h1>查询抽检单</h1>
     <p>
         <label>抽检单号</label>
-        <form action="../checknum.do" method="post">
+        <form action="/checknum.do" method="post">
         <input class="sf" name="checknum" type="text"  />
-        <span class="field_desc">Field description</span>
-        <a class="button_link dialog_link">查询</a>
-         <input type="submit" value="ok">
+        <span class="field_desc"></span>
+       <%-- <a class="button_link dialog_link">查询</a>--%>
+         <input type="submit" value="查询">
         </form>
     </p>
     <table id="t1" class="normal fullwidth tablesorter">
         <tbody>
         <c:forEach items="${maps}" var="map">
-        <tr><td>抽检单号</td><td>${map.checknum}</td></tr>
-        <tr><td>发货单位</td><td></td></tr>
-        <tr><td>委托方</td><td></td></tr>
-        <tr><td>车牌号</td><td></td></tr>
-        <tr><td>烟叶年度</td><td></td></tr>
-        <tr><td>烟叶产地</td><td></td></tr>
-        <tr><td>烟叶等级</td><td></td></tr>
-        <tr><td>烟叶品种</td><td></td></tr>
-        <tr><td>抽检员</td><td></td></tr>
-        <tr><td>抽检日期</td><td></td></tr>
+        <tr><td>抽检单号</td><td>${map.CHECKNUM}</td></tr>
+        <tr><td>发货单位</td><td>${map.DELIVERYCOM}</td></tr>
+        <tr><td>委托方</td><td>${map.CLIENT}</td></tr>
+        <tr><td>车牌号</td><td>${map.CARNUM}</td></tr>
+        <tr><td>烟叶年度</td><td>${map.PROCEDUREYEAR}</td></tr>
+        <tr><td>烟叶产地</td><td>${map.PROCEDUREAREA}</td></tr>
+        <tr><td>烟叶等级</td><td>${map.LEVELNAME}</td></tr>
+        <tr><td>烟叶品种</td><td>${map.TOBACCOCATEGORY}</td></tr>
+        <tr><td>抽检员</td><td>${map.OPERATOR_}</td></tr>
+        <tr><td>抽检日期</td><td><fmt:formatDate  value="${map.CHECKDATE}" pattern="yyyy-MM-dd" ></fmt:formatDate></td></tr>
         </c:forEach>
         </tbody>
     </table>

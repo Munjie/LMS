@@ -41,8 +41,24 @@
 
   <select id="displayRawcheckByChecknum" resultType="java.util.Map" parameterType="java.lang.String">
 
-SELECT rc.checknum,rc.carnum,rc.checkdate,decom.name_ DELIVERYCOMPANY ,
-clcom.name_ CLIENT ,rc.carnum,us.name_ OPERATOR_,tl.levelname_,rt.producingyear,pa.name_,tt.name_
+  SELECT rc.checknum,rc.carnum,rc.checkdate,decom.name_ DELIVERYCOM ,
+  clcom.name_ CLIENT ,rc.carnum,us.name_ OPERATOR_,tl.levelname_ LEVELNAME,rt.producingyear PROCEDUREYEAR,pa.name_ PROCEDUREAREA,tt.name_ TOBACCOCATEGORY
+  FROM Rawcheck rc
+  JOIN company decom ON decom.id = rc.deliverycompany
+  JOIN company clcom ON clcom.ID = rc.client
+  JOIN USERS us ON rc.operator_ = us.id
+  JOIN Rawtobacco rt ON rt.id = rc.rawtobacco
+  JOIN producingarea pa ON pa.id = rt.producingarea
+  JOIN tobaccolevel tl ON rt.level_ = tl.levelid
+  JOIN tobaccocategory tt ON tt.id = rt.tobaccocategory
+  WHERE rc.checknum =  #{checknum}
+
+</select>
+  <select id="displayRawcheckByCheckId" resultType="java.util.Map" parameterType="java.lang.Integer">
+
+SELECT rc.checknum,rc.carnum,rc.checkdate,decom.name_ DELIVERYCOM ,
+clcom.name_ CLIENT ,rc.carnum,us.name_ OPERATOR_,tl.levelname_ LEVELNAME,
+rt.producingyear PROCEDUREYEAR,pa.name_ PROCEDUREAREA,tt.name_ TOBACCOCATEGORY
 FROM Rawcheck rc
 JOIN company decom ON decom.id = rc.deliverycompany
 JOIN company clcom ON clcom.ID = rc.client
@@ -51,8 +67,7 @@ JOIN Rawtobacco rt ON rt.id = rc.rawtobacco
 JOIN producingarea pa ON pa.id = rt.producingarea
 JOIN tobaccolevel tl ON rt.level_ = tl.levelid
 JOIN tobaccocategory tt ON tt.id = rt.tobaccocategory
-WHERE rc.checknum =  #{checknum}
-
+WHERE rc.id =  #{checkId}
 
   </select>
 

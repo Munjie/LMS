@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.StoragelocationMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Storagelocation" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="WAREHOUSE" property="warehouse" jdbcType="DECIMAL" />
+    <result column="NAME_" property="name" jdbcType="VARCHAR" />
+    <result column="AVAILABLE" property="available" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, WAREHOUSE, NAME_, AVAILABLE
+  </sql>
+  <select id="displayStoragelocation" resultMap="BaseResultMap"  >
+    select  *  from STORAGELOCATION
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from STORAGELOCATION
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.mwj.model.Storagelocation" >
+    insert into STORAGELOCATION (ID, WAREHOUSE, NAME_, 
+      AVAILABLE)
+    values (#{id,jdbcType=DECIMAL}, #{warehouse,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, 
+      #{available,jdbcType=CHAR})
+  </insert>
+
+</mapper>

@@ -34,5 +34,12 @@ public class RawcheckService {
         return  rawcheckDao.displayRawcheckByChecknum(checknum);
     }
 
+    //根据抽检ID查询信息
+    public   Map displayRawcheckByCheckId(int checkId){
+
+        return  rawcheckDao.displayRawcheckByCheckId(checkId);
+
+    }
+
 
 }

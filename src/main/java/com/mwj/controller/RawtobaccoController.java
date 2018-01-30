@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/")
 @Controller
@@ -52,31 +54,21 @@ public class RawtobaccoController {
         int rawcheckId = rawcheck.getId();
         rawcheckdetail.setCheckinfo(rawcheckId);
         String[] split = tempdata.split(",");
+        List<Rawcheckdetail> list = new ArrayList<>();
         for (int i = 0; i < split.length / 2; i++) {
             rawcheckdetail.setSequence(Integer.parseInt(split[2 * i]));
             rawcheckdetail.setCheckweight(split[2 * i + 1]);
             rawcheckdetailService.addRawcheckdetail(rawcheckdetail);
+            list.add(rawcheckdetail);
         }
          model.addAttribute("",record);
         final List<Rawcheck> rawchecks = rawcheckService.showRawChcekById(rawcheckId);
-        int client = 0;
-        int deliverycompany = 0;
 
-        for (Rawcheck rawcheck1 : rawchecks){
-
-          client = rawcheck1.getClient();
-          deliverycompany = rawcheck1.getDeliverycompany();
-        }
-        Company  company = companyService.showClient(client);
-        Company company1 = companyService.showDeliver(deliverycompany);
-
-        String clientName = company.getName();
-        String deliverName = company1.getName();
-
-         model.addAttribute("clientName",clientName);
-         model.addAttribute("deliverName",deliverName);
+        final Map maps = rawcheckService.displayRawcheckByCheckId(rawcheckId);
+        model.addAttribute("map",maps);
+         model.addAttribute("list",list);
          model.addAttribute("rawchecks",rawchecks);
-        return "table/RawCheckSheet";
+         return "table/RawCheckSheet";
 
     }
 

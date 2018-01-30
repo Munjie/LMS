@@ -37,7 +37,12 @@ public class RawcheckDao {
 
        return  rawcheckMapper.displayRawcheckByChecknum(checknum);
     }
+    //根据抽检ID查询信息
+      public   Map displayRawcheckByCheckId(int checkId){
 
+        return  rawcheckMapper.displayRawcheckByCheckId(checkId);
+
+  }
 
 
 }
