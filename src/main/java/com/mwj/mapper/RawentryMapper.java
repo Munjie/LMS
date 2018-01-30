@@ -1,17 +1,15 @@
 package com.mwj.mapper;
 
-import java.math.BigDecimal;
+import com.mwj.model.Rawentry;
+
+import java.util.Map;
 
 public interface RawentryMapper {
-    int deleteByPrimaryKey(BigDecimal id);
 
-    int insert(Rawentry record);
+   //增加入库信息
+    int addRawentry(Rawentry record);
+    //显示入库信息
+    Map displayRawentry(int rawentryId);
 
-    int insertSelective(Rawentry record);
 
-    Rawentry selectByPrimaryKey(BigDecimal id);
-
-    int updateByPrimaryKeySelective(Rawentry record);
-
-    int updateByPrimaryKey(Rawentry record);
 }

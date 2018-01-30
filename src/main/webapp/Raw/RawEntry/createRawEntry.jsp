@@ -40,16 +40,17 @@
 </head>
 
 <body>
+<form action="/addRowentry.do" method="post">
 <fieldset>
     <h1>新增原料入库表</h1>
     <p>
         <label>入库单号</label>
-        <input class="sf" name="sf" type="text" value="small input field" />
+        <input class="sf" name="entrynum" type="text" />
         <span class="field_desc">Field description</span>
     </p>
     <p>
         <label>发货单位</label>
-        <select name="dropdown" class="dropdown">
+        <select name="deliverycompany" class="dropdown">
 
             <c:forEach items="${company}" var="com">
             <option value="${com.id}">${com.name}</option>
@@ -58,7 +59,7 @@
     </p>
     <p>
         <label>委托方</label>
-        <select name="dropdown" class="dropdown">
+        <select name="client" class="dropdown">
 
             <c:forEach items="${company}" var="com">
                 <option value="${com.id}">${com.name}</option>
@@ -67,17 +68,17 @@
     </p>
     <p>
         <label>车牌号</label>
-        <input class="sf" name="sf" type="text" />
+        <input class="sf" name="carnum" type="text" />
         <span class="field_desc">Field description</span>
     </p>
     <p>
         <label>烟叶年度</label>
-        <input class="sf" name="sf" type="text"/>
+        <input class="sf" name="producingyear" type="text"/>
         <span class="field_desc">Field description</span>
     </p>
     <p>
         <label>烟叶产地</label>
-        <select>
+        <select name="producingarea">
             <c:forEach items="${producingareas}" var="pro">
             <option value="${pro.id}">${pro.name}</option>
             </c:forEach>
@@ -87,7 +88,7 @@
 
     <p>
         <label>仓管员</label>
-        <select>
+        <select name="operator">
 
             <c:forEach items="${users}" var="user">
                 <option value="${user.id}">${user.name}</option>
@@ -97,7 +98,7 @@
     </p>
     <p>
         <label>存放仓库</label>
-        <select name="select" class="dropdown">
+        <select name="storagelocationid" class="dropdown">
 
             <c:forEach items="${storagelocations}" var="sto">
             <option value="${sto.id}">${sto.name}</option>
@@ -107,7 +108,7 @@
     </p>
     <p>
         <label>入库日期</label>
-        <input name="datepicker" class="datepicker" />
+        <input name="entrydate" type="date"/>
     </p>
 
     <p><a class="button_link dialog_link">添加明细</a>	</p>
@@ -175,6 +176,7 @@
     </div>
     <p><input class="button" type="submit" value="Submit" /> <input class="button" type="reset" value="Reset" /></p>
 </fieldset>
+</form>
 </body>
 </html>
 

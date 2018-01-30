@@ -1,20 +1,20 @@
 package com.mwj.controller;
 
 
-import com.mwj.model.Company;
-import com.mwj.model.Producingarea;
-import com.mwj.model.Storagelocation;
-import com.mwj.model.Users;
-import com.mwj.service.CompanyService;
-import com.mwj.service.ProducingareaService;
-import com.mwj.service.StoragelocationService;
-import com.mwj.service.UserService;
+import com.mwj.model.*;
+import com.mwj.service.*;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/")
 @Controller
@@ -29,6 +29,13 @@ public class RawentryController {
     private UserService userService;
     @Resource
     private ProducingareaService producingareaService;
+    @Resource
+    private RawentryService rawentryService;
+
+    @InitBinder
+    public void bindDate(ServletRequestDataBinder requestDataBinder) {
+        requestDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), false));
+    }
 
 
     @RequestMapping("creteRowentry.do")
@@ -47,7 +54,17 @@ public class RawentryController {
             return "Raw/RawEntry/createRawEntry";
         else
             return null;
-
-
     }
+    @RequestMapping("addRowentry.do")
+    public String addRowentry(Rawentry rawentry,Model model){
+        final boolean b = rawentryService.addRawentry(rawentry);
+        final int id = rawentry.getId();
+        final Map map = rawentryService.displayRawentry(id);
+        model.addAttribute("map",map);
+        if (b)
+            return "table/RawEntrySheet";
+        else
+            return  null;
+    }
+
 }

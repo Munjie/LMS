@@ -17,19 +17,28 @@
     ID, ENTRYNUM, ENTRYDATE, DELIVERYCOMPANY, CLIENT, CARNUM, OPERATOR_, STORAGELOCATIONID, 
     PRODUCINGYEAR, PRODUCINGAREA
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
-    select 
-    <include refid="Base_Column_List" />
-    from RAWENTRY
-    where ID = #{id,jdbcType=DECIMAL}
-  </select>
 
+<select id="displayRawentry" resultType="java.util.Map" parameterType="java.lang.Integer">
+ SELECT re.entrynum,us.name_ OPERATOR_,re.entrydate,decom.name_ DELIVERYCOM ,
+clcom.name_ CLIENT ,re.carnum,sl.name_ storagelocation,pa.name_ producingarea,re.producingyear
+FROM RAWENTRY re
+JOIN company decom ON decom.id = re.deliverycompany
+JOIN company clcom ON clcom.ID = re.client
+JOIN USERS us ON us.id = re.operator_
+JOIN producingarea pa ON pa.id = re.producingarea
+JOIN storagelocation sl ON sl.id = re.storagelocationid
+WHERE re.id = #{rawentryId}
+</select>
   <insert id="addRawentry" parameterType="com.mwj.model.Rawentry" >
+
+    <selectKey keyProperty="id"  resultType="java.lang.Integer" >
+      select RAWENTRY_SEQ.NEXTVAL-1 FROM  dual
+    </selectKey>
     insert into RAWENTRY (ID, ENTRYNUM, ENTRYDATE, 
       DELIVERYCOMPANY, CLIENT, CARNUM, 
       OPERATOR_, STORAGELOCATIONID, PRODUCINGYEAR, 
       PRODUCINGAREA)
-    values (#{id,jdbcType=DECIMAL}, #{entrynum,jdbcType=VARCHAR}, #{entrydate,jdbcType=TIMESTAMP}, 
+    values (RAWENTRY_SEQ.NEXTVAL, #{entrynum,jdbcType=VARCHAR}, #{entrydate,jdbcType=TIMESTAMP},
       #{deliverycompany,jdbcType=DECIMAL}, #{client,jdbcType=DECIMAL}, #{carnum,jdbcType=VARCHAR}, 
       #{operator,jdbcType=DECIMAL}, #{storagelocationid,jdbcType=DECIMAL}, #{producingyear,jdbcType=DECIMAL}, 
       #{producingarea,jdbcType=DECIMAL})
