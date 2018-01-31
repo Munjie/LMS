@@ -6,6 +6,7 @@ import com.mwj.model.Rawentry;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -27,4 +28,10 @@ public class RawentryDao {
         return rawentryMapper.displayRawentry(rawentryId);
 
    }
+
+    //ajax显示抽检信息
+   public List<Map> checkNemberInfo(String checkNumber){
+
+       return  rawentryMapper.checkNemberInfo(checkNumber);
+    }
 }

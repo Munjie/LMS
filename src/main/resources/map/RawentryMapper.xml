@@ -29,6 +29,18 @@ JOIN producingarea pa ON pa.id = re.producingarea
 JOIN storagelocation sl ON sl.id = re.storagelocationid
 WHERE re.id = #{rawentryId}
 </select>
+
+  <select id="checkNemberInfo" resultType="java.util.Map" parameterType="java.lang.String">
+SELECT rc.checknum CHECKNUM,tl.levelname_ LEVELNA,
+tt.name_ TOBACCOCATEGORY,rd.checkweight checkweight
+FROM Rawcheck rc
+JOIN Rawtobacco rt ON rt.id = rc.rawtobacco
+JOIN tobaccolevel tl ON rt.level_ = tl.levelid
+JOIN tobaccocategory tt ON tt.id = rt.tobaccocategory
+JOIN RAWCHECKDETAIL rd ON rd.checkinfo = rc.id
+WHERE rc.checknum = #{checkNumber}
+  </select>
+
   <insert id="addRawentry" parameterType="com.mwj.model.Rawentry" >
 
     <selectKey keyProperty="id"  resultType="java.lang.Integer" >

@@ -98,8 +98,8 @@
     </p>
     <p>
         <label>存放仓库</label>
-        <select name="storagelocationid" class="dropdown">
-
+        <select name="storagelocationid" class="dropdown" id="firstlocation">
+            <option >请选择库位</option>
             <c:forEach items="${storagelocations}" var="sto">
             <option value="${sto.id}">${sto.name}</option>
             </c:forEach>
@@ -115,34 +115,42 @@
     <div id="dialog" title="Modals with Hello!">
         <form>
             <p>
-                <label for="name">抽检单号:</label>
-                <input type="text" name="name" id="name"  />
+                <label for="name">序号:</label>
+                <input type="text" name="name" id="sequence"  />
             </p>
             <p>
-                <label for="email">规格 </label><input type="text" name="email" id="email" value=""  />
+                <label for="name">抽检单号:</label>
+                <input type="text" name="name" id="checknumber"  onblur="querycheckinfo()" value=""/>
+            </p>
+            <p>
+                <label for="email">规格 </label><input type="text" name="email" id="standerd" value=""  />
             </p>
             <p>
                 <label for="label">件数 </label>
-                <input type="text" name="email2" id="label" value=""  />
+                <input type="text" name="email2" id="count" value=""  />
             </p>
             <p>
                 <label for="label2">库位 </label>
-                <input type="text" name="email3" id="label2" value=""  />
+                <select name="storagelocationid" class="dropdown" id="lastlocation" onchange="verifylocation()">
+                    <option >请选择库位</option>
+                    <c:forEach items="${storagelocations}" var="sto">
+                        <option value="${sto.id}">${sto.name}</option>
+                    </c:forEach>
+
+                </select>
+               <%-- <input type="text" name="email3" id="location" value=""  />--%>
             </p>
             <p>
                 <label for="label2">烟叶等级 </label>
-                <input type="text" name="email3" id="label3" value=""  />
+                <input type="text" name="email3" id="level" value=""  />
             </p>
             <p>
                 <label for="label2">烟叶品种 </label>
-                <input type="text" name="email3" id="label4" value=""  />
+                <input type="text" name="email3" id="gator" value=""  />
             </p>
             <p>
                 <label for="label2">重量 </label>
-                <input type="text" name="email3" id="label5" value=""  />
-            </p>
-            <p>
-                <label for="password"></label>
+                <input type="text" name="email3" id="weight" value=""  />
             </p>
         </form>
     </div>

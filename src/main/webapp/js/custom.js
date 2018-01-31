@@ -35,6 +35,45 @@ function  addall() {
     });*/
 
 }
+function verifylocation() {
+	var first_location = jQuery( '#firstlocation').val();
+	var last_location  = jQuery( '#lastlocation').val();
+	if (first_location != last_location){
+		alert("请保持和存放仓库选项名称一致");
+		return;
+	}
+}
+
+function  querycheckinfo() {
+
+
+    var temp_info = jQuery('#checknumber').val();
+    var num = 0;
+    var wei = 0;
+    var ge = 0;
+    jQuery.post("checknuminfo.do",{'checkNum':temp_info},function (da) {
+		var  t = eval(da);
+       for (var k in  t){
+         for (var s in t[k]){
+             document.getElementById("level").value=t[k].LEVELNA;
+             document.getElementById("gator").value=t[k].TOBACCOCATEGORY;
+             ge =  t[k].CHECKWEIGHT;
+
+            /* alert(t[k].CHECKWEIGHT);
+             alert(t[k].TOBACCOCATEGORY);
+             alert(t[k].CHECKNUM);*/
+
+		 }
+           num++;
+		   wei += ge;
+
+           document.getElementById("count").value=num;
+           document.getElementById("weight").value=wei;
+	   }
+    });
+
+
+}
 
  
 jQuery(document).ready(function() {
@@ -69,7 +108,7 @@ jQuery(document).ready(function() {
 			} 
 		}
 	});
-	
+
 	jQuery('.CRCdialog_link').click(function(){
 		jQuery('#CRCdialog').dialog('open');
 		return false;
@@ -80,16 +119,34 @@ jQuery(document).ready(function() {
 		width: 650,
 		modal:true,
 		buttons: {
-			"Done": function() {
+			"OK": function() {
+                var sequence = jQuery('#sequence');
+				var checknumber = jQuery('#checknumber');
+                var standerd = jQuery('#standerd');
+                var count = jQuery('#count');
+                var lastlocation = jQuery('#lastlocation');
+                var level = jQuery('#level');
+                var gator = jQuery('#gator');
+                var weight = jQuery('#weight');
+
 				jQuery( "#users tbody" ).append( "<tr>" +
-					"<td>" + name.val() + "</td>" + 
-							"<td>" + email.val() + "</td>" + 
-							"<td>" + password.val() + "</td>" +
-						"</tr>" );  
-				
-				name.val("");
-				email.val("");
-				 password.val("");
+                    "<td>" + sequence.val() + "</td>" +
+					"<td>" + checknum.val() + "</td>" +
+							"<td>" + standerd.val() + "</td>" +
+							"<td>" + count.val() + "</td>" +
+                    "<td>" + lastlocation.val() + "</td>" +
+                    "<td>" + level.val() + "</td>" +
+                    "<td>" + gator.val() + "</td>" +
+                    "<td>" + weight.val() + "</td>" +
+						"</tr>" );
+                sequence.val("");
+                checknumber.val("");
+                standerd.val("");
+                count.val("");
+                lastlocation.val("");
+                level.val("");
+                gator.val("");
+                weight.val("");
 				jQuery(this).dialog("close"); 
 			}, 
 			"Cancel": function() { 

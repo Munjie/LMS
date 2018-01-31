@@ -8,7 +8,7 @@ public interface UsersMapper {
 
 
 //登录
-    int login(Users users);
+    Users login(Users users);
     //显示员工
     List<Users> showUser();
 

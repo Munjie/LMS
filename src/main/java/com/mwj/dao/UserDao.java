@@ -16,11 +16,9 @@ public class UserDao {
     private UsersMapper usersMapper;
 
 //登录
-    public boolean login(Users users){
+    public Users login(Users users){
+         return  usersMapper.login(users);
 
-
-         int login = usersMapper.login(users);
-         return  login > 0;
     }
 
     //显示员工

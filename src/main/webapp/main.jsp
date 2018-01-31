@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -45,7 +46,7 @@
         <div id="primary_left">
             <div id="logo">
                 <div class="menu">
-                    <p><a href="login.html"><img class="tooltip" title="管理员:JYZ" src="assets/avatar.png" alt="" /></a><span style="color:white;font-size:25px"> 贾云喆</span></p>
+                    <p><a href="login.html"><img class="tooltip" title="管理员:${login.username}" src="assets/avatar.png" alt="" /></a><span style="color:white;font-size:25px">${login.name}</span></p>
                     <p>
                     </p>
 
@@ -171,7 +172,7 @@
                 </ul>
             </div> <!-- navigation menu end -->
             <div id="primary_top">
-                <p><strong>复烤物流管理系统</strong></p>
+                <p><strong>中国烟草物流系统</strong></p>
             </div>
         </div> <!-- sidebar end -->
         <div id="primary_right">

@@ -6,6 +6,7 @@ import com.mwj.model.Rawentry;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -26,5 +27,11 @@ public class RawentryService {
     public Map displayRawentry(int rawentryId){
         return rawentryDao.displayRawentry(rawentryId);
 
+    }
+
+    //ajax显示抽检信息
+    public List<Map> checkNemberInfo(String checkNumber){
+
+        return  rawentryDao.checkNemberInfo(checkNumber);
     }
 }

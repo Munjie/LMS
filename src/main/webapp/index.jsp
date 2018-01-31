@@ -35,13 +35,13 @@
             <img src="assets/logologin.png" alt="Logo" />
         </div>
         <div id="box">
-            <form action="main.jsp" method="POST">
+            <form action="/login.do" method="POST">
                 <div class="one_half">
-                    <p>username <input name="username" value="username" class="field" onBlur="if (jQuery(this).val() == &quot;&quot;) { jQuery(this).val(&quot;username&quot;); }"/></p>
+                    <p>username <input name="username"  class="field" onBlur="if (jQuery(this).val() == &quot;&quot;) { jQuery(this).val(&quot;username&quot;); }"/></p>
                     <p><input type="checkbox" class="iphone" /><label class="fix">Remember me</label></p>
                 </div>
                 <div class="one_half last">
-                    <p>password<input type="password" name="password" value="asdf1234" class="field" onBlur="if (jQuery(this).val() == &quot;&quot;) { jQuery(this).val(&quot;asdf1234&quot;); }" onClick="jQuery(this).val(&quot;&quot;);">	</p>
+                    <p>password<input type="password"  name="password" class="field" onBlur="if (jQuery(this).val() == &quot;&quot;) { jQuery(this).val(&quot;asdf1234&quot;); }" onClick="jQuery(this).val(&quot;&quot;);">	</p>
                     <p><input type="submit" value="Login" class="login" /></p>
                 </div>
             </form>
