@@ -49,26 +49,23 @@ function  querycheckinfo() {
 
     var temp_info = jQuery('#checknumber').val();
     var num = 0;
-    var wei = 0;
-    var ge = 0;
+    var allweight = 0;
+    var outweight = 0;
     jQuery.post("checknuminfo.do",{'checkNum':temp_info},function (da) {
 		var  t = eval(da);
        for (var k in  t){
          for (var s in t[k]){
              document.getElementById("level").value=t[k].LEVELNA;
              document.getElementById("gator").value=t[k].TOBACCOCATEGORY;
-             ge =  t[k].CHECKWEIGHT;
+             outweight = parseFloat(t[k].CHECKWEIGHT) ;
 
-            /* alert(t[k].CHECKWEIGHT);
-             alert(t[k].TOBACCOCATEGORY);
-             alert(t[k].CHECKNUM);*/
 
 		 }
            num++;
-		   wei += ge;
+           allweight += outweight;
 
            document.getElementById("count").value=num;
-           document.getElementById("weight").value=wei;
+           document.getElementById("weight").value=allweight;
 	   }
     });
 
