@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -59,7 +60,12 @@ public class RawentryController {
             return null;
     }
     @RequestMapping("addRowentry.do")
-    public String addRowentry(Rawentry rawentry,Model model){
+    public String addRowentry(Rawentry rawentry,@RequestParam("rawentryData")String rawentryData, Model model){
+        String[] temp = rawentryData.split(",");
+
+        for (int i = 0;i<temp.length;i++){
+            System.out.println(temp[i]);
+        }
         final boolean b = rawentryService.addRawentry(rawentry);
         final int id = rawentry.getId();
         final Map map = rawentryService.displayRawentry(id);

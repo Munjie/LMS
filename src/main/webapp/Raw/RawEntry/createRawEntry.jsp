@@ -110,7 +110,7 @@
         <label>入库日期</label>
         <input name="entrydate" type="date"/>
     </p>
-
+    <input type="hidden" name="rawentryData" id="hiddenrawentry"  />
     <p><a class="button_link dialog_link">添加明细</a>	</p>
     <div id="dialog" title="Modals with Hello!">
         <form>
@@ -169,8 +169,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>John Doe</td>
+       <%-- <tr>
+            <td>Joh</td>
             <td>john.doe@example.com</td>
             <td>johndoe1</td>
             <td>johndoe1</td>
@@ -183,7 +183,7 @@
                 <a href="#" title="Preferences" class="tooltip table_icon"><img src="../../assets/icons/actions_small/Preferences.png" alt="" /></a>
                 <a href="#" title="Delete this user" class="tooltip table_icon"><img src="../../assets/icons/actions_small/Trash.png" alt="" /></a>
             </td>
-        </tr>
+        </tr>--%>
         </tbody>
     </table>
     <div align="center"><a href="#">首页</a>
@@ -194,7 +194,7 @@
         <a href="#">下一页</a>
         <a href="#">尾页</a>
     </div>
-    <p><input class="button" type="submit" value="Submit" /> <input class="button" type="reset" value="Reset" /></p>
+    <p><input class="button" type="submit" value="Submit" onclick="prerawcheck()"/> <input class="button" type="reset" value="Reset" /></p>
 </fieldset>
 </form>
 </body>

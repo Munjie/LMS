@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.RawentrydetailMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Rawentrydetail" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ENTRYINFO" property="entryinfo" jdbcType="DECIMAL" />
+    <result column="RAWCHECK" property="rawcheck" jdbcType="DECIMAL" />
+    <result column="AMOUNT" property="amount" jdbcType="FLOAT" />
+    <result column="STANDARD_" property="standard" jdbcType="VARCHAR" />
+    <result column="WEIGHT" property="weight" jdbcType="VARCHAR" />
+    <result column="LOCATION_" property="location" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ENTRYINFO, RAWCHECK, AMOUNT, STANDARD_, WEIGHT, LOCATION_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from RAWENTRYDETAIL
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <insert id="addRawentryDetail" parameterType="com.mwj.model.Rawentrydetail" >
+    insert into RAWENTRYDETAIL (ID, ENTRYINFO, RAWCHECK, 
+      AMOUNT, STANDARD_, WEIGHT, 
+      LOCATION_)
+    values (#{id,jdbcType=DECIMAL}, #{entryinfo,jdbcType=DECIMAL}, #{rawcheck,jdbcType=DECIMAL}, 
+      #{amount,jdbcType=FLOAT}, #{standard,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, 
+      #{location,jdbcType=DECIMAL})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.mwj.model.Rawentrydetail" >
+    update RAWENTRYDETAIL
+    set ENTRYINFO = #{entryinfo,jdbcType=DECIMAL},
+      RAWCHECK = #{rawcheck,jdbcType=DECIMAL},
+      AMOUNT = #{amount,jdbcType=FLOAT},
+      STANDARD_ = #{standard,jdbcType=VARCHAR},
+      WEIGHT = #{weight,jdbcType=VARCHAR},
+      LOCATION_ = #{location,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -35,6 +35,30 @@ function  addall() {
     });*/
 
 }
+function  prerawcheck() {
+    /*var temp_ser = new Array();
+    jQuery('table tr td').each(function(){
+        temp_ser.push(jQuery(this).val());
+    });
+    jQuery('#hiddenrawentry').val(temp_ser);*/
+    /*var temp = jQuery('#rawform').serialize();
+   jQuery.post("addRawtobacco.do",temp,function (data) {
+       /!* var  t = eval('('+data+')');
+        alert(t.msg);*!/
+    });*/
+   /* var temp = "";
+    jQuery('td').each(function () {
+        temp += $(this).html() + ",";
+    })*/
+    var temp_data = new Array();
+    var table = document.getElementById("users");
+    var td = table.getElementsByTagName("td");
+    var len = td.length-1;
+    for(i=0;i<len;i++){
+        temp_data.push(td[i].innerHTML) ;
+    }
+    jQuery('#hiddenrawentry').val(temp_data);
+}
 function verifylocation() {
 	var first_location = jQuery( '#firstlocation').val();
 	var last_location  = jQuery( '#lastlocation').val();
@@ -128,14 +152,20 @@ jQuery(document).ready(function() {
 
 				jQuery( "#users tbody" ).append( "<tr>" +
                     "<td>" + sequence.val() + "</td>" +
-					"<td>" + checknum.val() + "</td>" +
+					"<td>" + checknumber.val() + "</td>" +
 							"<td>" + standerd.val() + "</td>" +
 							"<td>" + count.val() + "</td>" +
                     "<td>" + lastlocation.val() + "</td>" +
                     "<td>" + level.val() + "</td>" +
                     "<td>" + gator.val() + "</td>" +
                     "<td>" + weight.val() + "</td>" +
-						"</tr>" );
+                    "<td><a href='#' title='Edit this user' class='tooltip table_icon'>" +
+					"<img src='../../assets/icons/actions_small/Pencil.png' alt='' width='16' height='16' />" +
+					"</a><a href='#' title='Preferences' class='tooltip table_icon'>" +
+					"<img src='../../assets/icons/actions_small/Preferences.png' alt='' />" +
+					"</a><a href='#' title='Delete this user' class='tooltip table_icon'>" +
+					"<img src='../../assets/icons/actions_small/Trash.png' alt='' /></a></td>"+
+                "</tr>");
                 sequence.val("");
                 checknumber.val("");
                 standerd.val("");
