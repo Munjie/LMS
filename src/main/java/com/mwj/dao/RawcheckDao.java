@@ -43,6 +43,10 @@ public class RawcheckDao {
         return  rawcheckMapper.displayRawcheckByCheckId(checkId);
 
   }
+    //查询抽检单号根据抽检单
+   public int queryRawChcekId (String checknum){
 
+         return rawcheckMapper.queryRawChcekId(checknum);
+   }
 
 }

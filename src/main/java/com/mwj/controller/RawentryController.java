@@ -35,6 +35,10 @@ public class RawentryController {
     private ProducingareaService producingareaService;
     @Resource
     private RawentryService rawentryService;
+    @Resource
+    private RawentrydetailService rawentrydetailService;
+    @Resource
+    private  RawcheckService rawcheckService;
 
     @InitBinder
     public void bindDate(ServletRequestDataBinder requestDataBinder) {
@@ -61,14 +65,22 @@ public class RawentryController {
     }
     @RequestMapping("addRowentry.do")
     public String addRowentry(Rawentry rawentry,@RequestParam("rawentryData")String rawentryData, Model model){
-        String[] temp = rawentryData.split(",");
-
-        for (int i = 0;i<temp.length;i++){
-            System.out.println(temp[i]);
-        }
         final boolean b = rawentryService.addRawentry(rawentry);
-        final int id = rawentry.getId();
-        final Map map = rawentryService.displayRawentry(id);
+        String[] temp = rawentryData.split(",");
+         Rawentrydetail rawentrydetail = new Rawentrydetail();
+        int rawentryId = rawentry.getId();
+        for (int i = 0;i<temp.length/8;i++){
+            rawentrydetail.setId(Integer.parseInt(temp[8*i]));
+            rawentrydetail.setStandard(temp[8*i+2]);
+            rawentrydetail.setAmount(Integer.parseInt(temp[8*i+3]));
+            rawentrydetail.setLocation(Integer.parseInt(temp[8*i+4]));
+            rawentrydetail.setWeight(temp[8*i+7]);
+            rawentrydetail.setEntryinfo(rawentryId);
+            rawentrydetail.setRawcheck(rawcheckService.queryRawChcekId(temp[8*i+1]));
+        }
+
+        final boolean b1 = rawentrydetailService.addRawentryDetail(rawentrydetail);
+        final Map map = rawentryService.displayRawentry(rawentryId);
         model.addAttribute("map",map);
         if (b)
             return "table/RawEntrySheet";
@@ -81,6 +93,7 @@ public class RawentryController {
     public  List<Map> checkNumInfo(String checkNum){
 
         List<Map> mapList = rawentryService.checkNemberInfo(checkNum);
+
 
        for (int i = 0;i<mapList.size();i++){
 

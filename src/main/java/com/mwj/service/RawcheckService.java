@@ -41,5 +41,11 @@ public class RawcheckService {
 
     }
 
+    //查询抽检单号根据抽检单
+    public int queryRawChcekId (String checknum){
+
+        return rawcheckDao.queryRawChcekId(checknum);
+    }
+
 
 }

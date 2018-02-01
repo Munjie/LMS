@@ -31,7 +31,7 @@ WHERE re.id = #{rawentryId}
 </select>
 
   <select id="checkNemberInfo" resultType="java.util.Map" parameterType="java.lang.String">
-SELECT rc.checknum CHECKNUM,tl.levelname_ LEVELNA,
+SELECT rc.id RCID,rc.checknum CHECKNUM,tl.levelname_ LEVELNA,
 tt.name_ TOBACCOCATEGORY,rd.checkweight checkweight
 FROM Rawcheck rc
 JOIN Rawtobacco rt ON rt.id = rc.rawtobacco

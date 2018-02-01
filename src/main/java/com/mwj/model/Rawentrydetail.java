@@ -8,7 +8,7 @@ public class Rawentrydetail {
 
     private int rawcheck;
 
-    private Double amount;
+    private int amount;
 
     private String standard;
 
@@ -40,11 +40,11 @@ public class Rawentrydetail {
         this.rawcheck = rawcheck;
     }
 
-    public Double getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

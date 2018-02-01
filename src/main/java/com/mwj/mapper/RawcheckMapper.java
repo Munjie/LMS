@@ -11,8 +11,6 @@ public interface RawcheckMapper {
     //新增抽检
     int addRocheck(Rawcheck record);
 
-
-
     Rawcheck selectByPrimaryKey(BigDecimal id);
 
 
@@ -24,6 +22,8 @@ public interface RawcheckMapper {
 
     //根据抽检ID查询信息
     Map displayRawcheckByCheckId(int checkId);
+   //查询抽检单号根据抽检单
+   int queryRawChcekId (String checknum);
 
 
 }

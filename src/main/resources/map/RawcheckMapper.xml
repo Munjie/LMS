@@ -38,6 +38,11 @@
    SELECT * FROM  RAWCHECK  where ID = #{id,jdbcType=DECIMAL}
 
  </select>
+    <select id="queryRawChcekId" resultType="java.lang.Integer" parameterType="java.lang.String">
+
+        SELECT ID FROM  RAWCHECK  where CHECKNUM = #{checknum,jdbcType=VARCHAR}
+
+    </select>
 
   <select id="displayRawcheckByChecknum" resultType="java.util.Map" parameterType="java.lang.String">
 

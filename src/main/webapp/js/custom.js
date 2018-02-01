@@ -28,34 +28,18 @@ function  addall() {
         temp_ser.push(jQuery(this).val());
     });
    jQuery('#hira').val(temp_ser);
-    /*var temp = jQuery('#rawform').serialize();
-   jQuery.post("addRawtobacco.do",temp,function (data) {
-       /!* var  t = eval('('+data+')');
-        alert(t.msg);*!/
-    });*/
+
 
 }
 function  prerawcheck() {
-    /*var temp_ser = new Array();
-    jQuery('table tr td').each(function(){
-        temp_ser.push(jQuery(this).val());
-    });
-    jQuery('#hiddenrawentry').val(temp_ser);*/
-    /*var temp = jQuery('#rawform').serialize();
-   jQuery.post("addRawtobacco.do",temp,function (data) {
-       /!* var  t = eval('('+data+')');
-        alert(t.msg);*!/
-    });*/
-   /* var temp = "";
-    jQuery('td').each(function () {
-        temp += $(this).html() + ",";
-    })*/
+
     var temp_data = new Array();
-    var table = document.getElementById("users");
-    var td = table.getElementsByTagName("td");
-    var len = td.length-1;
-    for(i=0;i<len;i++){
-        temp_data.push(td[i].innerHTML) ;
+    var tb = document.getElementById('users');    // table 的 id
+    var rows = tb.rows;                           // 获取表格所有行
+    for(var i = 1; i<rows.length; i++ ){
+        for(var j = 0; j<rows[i].cells.length-1; j++ ){    // 遍历该行的 td
+           temp_data.push(rows[i].cells[j].innerHTML);         // 输出每个td的内容
+        }
     }
     jQuery('#hiddenrawentry').val(temp_data);
 }

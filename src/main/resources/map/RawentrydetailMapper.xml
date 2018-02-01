@@ -19,6 +19,7 @@
     from RAWENTRYDETAIL
     where ID = #{id,jdbcType=DECIMAL}
   </select>
+
   <insert id="addRawentryDetail" parameterType="com.mwj.model.Rawentrydetail" >
     insert into RAWENTRYDETAIL (ID, ENTRYINFO, RAWCHECK, 
       AMOUNT, STANDARD_, WEIGHT, 

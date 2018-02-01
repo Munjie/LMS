@@ -1,10 +1,7 @@
 package com.mwj.service;
-
-
 import com.mwj.dao.RawentrydetailDao;
 import com.mwj.model.Rawentrydetail;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 
 @Service
