@@ -65,65 +65,28 @@
     <p>&nbsp;</p>
     <table width="910" height="193" border="1" class="table" align="center" cellspacing="0" bordercolor="#000000">
         <tr>
-            <td width="60"><div align="center">序号</div></td>
-            <td width="100"><div align="center">抽检单号</div></td>
-            <td width="100"><div align="center">规格</div></td>
-            <td width="100"><div align="center">件数</div></td>
-            <td width="100"><div align="center">库位</div></td>
-            <td width="110"><div align="center">烟叶等级</div></td>
-            <td width="110"><div align="center">烟叶品种</div></td>
-            <td width="110"><div align="center">重量</div></td>
+            <td width="100" height="20"><div align="center">序号</div></td>
+            <td width="100" height="20"><div align="center">抽检单号</div></td>
+            <td width="100" height="20"><div align="center">规格</div></td>
+            <td width="100" height="20"><div align="center">件数</div></td>
+            <td width="100" height="20"><div align="center">库位</div></td>
+            <td width="100" height="20"><div align="center">烟叶等级</div></td>
+            <td width="100" height="20"><div align="center">烟叶品种</div></td>
+            <td width="100" height="20"><div align="center">重量</div></td>
         </tr>
+        <c:forEach items="${sheetlist}" var="sheet">
         <tr>
-            <td width="60">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
+            <td width="100" height="20">${sheet.id}</td>
+            <td width="100" height="20">${sheet.rawcheck}</td>
+            <td width="100" height="20">${sheet.standard}</td>
+            <td width="100" height="20">${sheet.amount}</td>
+            <td width="100" height="20">${sheet.location}</td>
+            <td width="100" height="20">${sheet.leaveName}</td>
+            <td width="100" height="20">${sheet.tobaccoGory}</td>
+            <td width="100" height="20">${sheet.weight}</td>
         </tr>
-        <tr>
-            <td width="60">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="100">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110">&nbsp;</td>
-            <td width="110"><br></td>
-        </tr>
+        </c:forEach>
+
     </table>
     </table>
     <table width="857" height="50"  align="center">

@@ -34,4 +34,11 @@ public class RawentryDao {
 
        return  rawentryMapper.checkNemberInfo(checkNumber);
     }
+    //回显入库信息打印表
+    public  List<Map> showRawentrySheet(String entryNumber){
+
+      return rawentryMapper.showRawentrySheet(entryNumber);
+    }
+
+
 }

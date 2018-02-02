@@ -66,7 +66,7 @@
                     <li><a href="#"><img src="assets/icons/small_icons_3/notes.png" alt /><span>原料入库</span></a>
                         <ul>
                             <li><a href="/creteRowentry.do" target="iframepage">新增入库</a></li>
-                            <li><a href="Raw/RawEntry/retriveRawEntry.html" target="iframepage">查询入库</a></li>
+                            <li><a href="Raw/RawEntry/retriveRawEntry.jsp" target="iframepage">查询入库</a></li>
                             <li><a href="Raw/RawEntry/allRawEntry.html" target="iframepage">审核入库</a></li>
 
                         </ul>

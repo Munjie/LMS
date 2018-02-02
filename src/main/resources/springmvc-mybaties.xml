@@ -30,6 +30,7 @@
              <value>classpath:map/RawentryMapper.xml</value>
              <value>classpath:map/StoragelocationMapper.xml</value>
              <value>classpath:map/RawentrydetailMapper.xml</value>
+             <value>classpath:map/VerifyinfoMapper.xml</value>
          </array>
         </property>
     </bean>

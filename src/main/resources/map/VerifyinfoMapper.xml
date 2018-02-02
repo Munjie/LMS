@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mwj.mapper.VerifyinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.mwj.model.Verifyinfo" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="COMMENT_" property="comment" jdbcType="VARCHAR" />
+    <result column="DATE_" property="date" jdbcType="TIMESTAMP" />
+    <result column="FLAG" property="flag" jdbcType="VARCHAR" />
+    <result column="VERIFIER" property="verifier" jdbcType="DECIMAL" />
+    <result column="RAW_ENTRY_ID" property="rawEntryId" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, COMMENT_, DATE_, FLAG, VERIFIER, RAW_ENTRY_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from VERIFYINFO
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <insert id="addVerifyinfo" parameterType="com.mwj.model.Verifyinfo" >
+    insert into VERIFYINFO (ID, COMMENT_, DATE_, 
+      FLAG, VERIFIER, RAW_ENTRY_ID
+      )
+    values (RAWENTRY_SEQ.NEXTVAL, #{comment,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP},
+      0, #{verifier,jdbcType=DECIMAL}, #{rawEntryId,jdbcType=DECIMAL}
+      )
+  </insert>
+
+
+</mapper>

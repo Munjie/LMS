@@ -1,5 +1,5 @@
 var $j =jQuery.noConflict();
-
+var dataseq = 0;
 window.onscroll = function()
 {
     if( window.XMLHttpRequest ) {
@@ -125,7 +125,7 @@ jQuery(document).ready(function() {
 		modal:true,
 		buttons: {
 			"OK": function() {
-                var sequence = jQuery('#sequence');
+                dataseq++;
 				var checknumber = jQuery('#checknumber');
                 var standerd = jQuery('#standerd');
                 var count = jQuery('#count');
@@ -135,7 +135,7 @@ jQuery(document).ready(function() {
                 var weight = jQuery('#weight');
 
 				jQuery( "#users tbody" ).append( "<tr>" +
-                    "<td>" + sequence.val() + "</td>" +
+                    "<td>" + dataseq + "</td>" +
 					"<td>" + checknumber.val() + "</td>" +
 							"<td>" + standerd.val() + "</td>" +
 							"<td>" + count.val() + "</td>" +

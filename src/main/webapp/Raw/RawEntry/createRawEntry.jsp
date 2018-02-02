@@ -115,10 +115,6 @@
     <div id="dialog" title="Modals with Hello!">
         <form>
             <p>
-                <label for="name">序号:</label>
-                <input type="text" name="name" id="sequence"  />
-            </p>
-            <p>
                 <label for="name">抽检单号:</label>
                 <input type="text" name="name" id="checknumber"  onblur="querycheckinfo()" value=""/>
             </p>

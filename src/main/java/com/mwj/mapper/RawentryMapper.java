@@ -13,4 +13,6 @@ public interface RawentryMapper {
     Map displayRawentry(int rawentryId);
     //ajax显示抽检信息
     List<Map> checkNemberInfo(String checkNumber);
+   //回显入库信息打印表
+    List<Map> showRawentrySheet(String entryNumber);
 }

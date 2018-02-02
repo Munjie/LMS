@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RequestMapping("/")
 @Controller
@@ -63,25 +60,44 @@ public class RawentryController {
         else
             return null;
     }
+    //入库
     @RequestMapping("addRowentry.do")
     public String addRowentry(Rawentry rawentry,@RequestParam("rawentryData")String rawentryData, Model model){
         final boolean b = rawentryService.addRawentry(rawentry);
-        String[] temp = rawentryData.split(",");
+         String[] temp = rawentryData.split(",");
          Rawentrydetail rawentrydetail = new Rawentrydetail();
+
+         List<RawentryDetailSheet> list = new ArrayList<>();
         int rawentryId = rawentry.getId();
         for (int i = 0;i<temp.length/8;i++){
-            rawentrydetail.setId(Integer.parseInt(temp[8*i]));
-            rawentrydetail.setStandard(temp[8*i+2]);
-            rawentrydetail.setAmount(Integer.parseInt(temp[8*i+3]));
-            rawentrydetail.setLocation(Integer.parseInt(temp[8*i+4]));
-            rawentrydetail.setWeight(temp[8*i+7]);
-            rawentrydetail.setEntryinfo(rawentryId);
-            rawentrydetail.setRawcheck(rawcheckService.queryRawChcekId(temp[8*i+1]));
+
+            rawentrydetail.setId(Integer.parseInt(temp[8*i]));//入库详细id
+            rawentrydetail.setStandard(temp[8*i+2]);//入库规格
+            rawentrydetail.setAmount(Integer.parseInt(temp[8*i+3]));//入库数量
+            rawentrydetail.setLocation(Integer.parseInt(temp[8*i+4]));//库位
+            rawentrydetail.setWeight(temp[8*i+7]);//重量
+            rawentrydetail.setEntryinfo(rawentryId);//入库关联id
+            rawentrydetail.setRawcheck(rawcheckService.queryRawChcekId(temp[8*i+1]));//入库关联抽检id
+            final boolean b1 = rawentrydetailService.addRawentryDetail(rawentrydetail);
+
+        }
+        for(int j = 0; j < temp.length/8;j++){
+            RawentryDetailSheet rawentryDetailSheet = new RawentryDetailSheet();
+            rawentryDetailSheet.setId(j);//序号
+            rawentryDetailSheet.setRawcheck(temp[8*j+1]);
+            rawentryDetailSheet.setStandard(temp[8*j+2]);//规格
+            rawentryDetailSheet.setAmount(Integer.parseInt(temp[8*j+3]));//数量
+            rawentryDetailSheet.setLocation(Integer.parseInt(temp[8*j+4]));//库位
+            rawentryDetailSheet.setLeaveName(temp[8*j+5]);//等级
+            rawentryDetailSheet.setTobaccoGory(temp[8*j+6]);//品种
+            rawentryDetailSheet.setWeight(temp[8*j+7]);//重量
+            list.add(rawentryDetailSheet);
+
         }
 
-        final boolean b1 = rawentrydetailService.addRawentryDetail(rawentrydetail);
         final Map map = rawentryService.displayRawentry(rawentryId);
         model.addAttribute("map",map);
+        model.addAttribute("sheetlist",list);
         if (b)
             return "table/RawEntrySheet";
         else
@@ -101,6 +117,19 @@ public class RawentryController {
        }
 
         return mapList;
+
+    }
+
+    //回显入库打印表
+    @RequestMapping("displayRawentrySheet")
+    public String showRawentrySheet(String entrynum,Model model){
+
+        final List<Map> mapList = rawentryService.showRawentrySheet(entrynum);
+
+        model.addAttribute("maplist",mapList);
+        return
+                "Raw/RawEntry/retriveRawEntry";
+
 
     }
 
