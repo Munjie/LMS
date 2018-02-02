@@ -15,4 +15,6 @@ public interface RawentryMapper {
     List<Map> checkNemberInfo(String checkNumber);
    //回显入库信息打印表
     List<Map> showRawentrySheet(String entryNumber);
+   //入库审核显示
+    List<Map> allRawentry();
 }

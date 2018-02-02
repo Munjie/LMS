@@ -40,5 +40,11 @@ public class RawentryDao {
       return rawentryMapper.showRawentrySheet(entryNumber);
     }
 
+    //入库审核显示
+    public  List<Map> allRawentry(){
+
+        return  rawentryMapper.allRawentry();
+    }
+
 
 }

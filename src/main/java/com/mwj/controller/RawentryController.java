@@ -36,6 +36,8 @@ public class RawentryController {
     private RawentrydetailService rawentrydetailService;
     @Resource
     private  RawcheckService rawcheckService;
+    @Resource
+    private  VerifyinfoService verifyinfoService;
 
     @InitBinder
     public void bindDate(ServletRequestDataBinder requestDataBinder) {
@@ -66,9 +68,13 @@ public class RawentryController {
         final boolean b = rawentryService.addRawentry(rawentry);
          String[] temp = rawentryData.split(",");
          Rawentrydetail rawentrydetail = new Rawentrydetail();
-
+        Verifyinfo verifyinfo = new Verifyinfo();
          List<RawentryDetailSheet> list = new ArrayList<>();
         int rawentryId = rawentry.getId();
+        verifyinfo.setRawEntryId(rawentryId);
+        verifyinfo.setDate(rawentry.getEntrydate());
+        verifyinfo.setVerifier(rawentry.getOperator());
+        final boolean b2 = verifyinfoService.addVerifyinfo(verifyinfo);
         for (int i = 0;i<temp.length/8;i++){
 
             rawentrydetail.setId(Integer.parseInt(temp[8*i]));//入库详细id
@@ -129,6 +135,20 @@ public class RawentryController {
         model.addAttribute("maplist",mapList);
         return
                 "Raw/RawEntry/retriveRawEntry";
+
+
+    }
+
+    @RequestMapping("verifyRawentry.do")
+    public String verifyRawentry(Model model){
+
+        final List<Map> mapList = rawentryService.allRawentry();
+        model.addAttribute("mapverify",mapList);
+        if (mapList != null)
+            return
+            "Raw/RawEntry/allRawEntry";
+        else
+            return null;
 
 
     }

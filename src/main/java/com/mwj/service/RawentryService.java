@@ -39,4 +39,10 @@ public class RawentryService {
 
         return rawentryDao.showRawentrySheet(entryNumber);
     }
+
+    //入库审核显示
+    public  List<Map> allRawentry(){
+
+        return  rawentryDao.allRawentry();
+    }
 }

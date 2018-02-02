@@ -67,7 +67,7 @@
                         <ul>
                             <li><a href="/creteRowentry.do" target="iframepage">新增入库</a></li>
                             <li><a href="Raw/RawEntry/retriveRawEntry.jsp" target="iframepage">查询入库</a></li>
-                            <li><a href="Raw/RawEntry/allRawEntry.html" target="iframepage">审核入库</a></li>
+                            <li><a href="/verifyRawentry.do" target="iframepage">审核入库</a></li>
 
                         </ul>
                     </li>

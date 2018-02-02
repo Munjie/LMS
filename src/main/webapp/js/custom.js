@@ -150,14 +150,6 @@ jQuery(document).ready(function() {
 					"</a><a href='#' title='Delete this user' class='tooltip table_icon'>" +
 					"<img src='../../assets/icons/actions_small/Trash.png' alt='' /></a></td>"+
                 "</tr>");
-                sequence.val("");
-                checknumber.val("");
-                standerd.val("");
-                count.val("");
-                lastlocation.val("");
-                level.val("");
-                gator.val("");
-                weight.val("");
 				jQuery(this).dialog("close"); 
 			}, 
 			"Cancel": function() { 
