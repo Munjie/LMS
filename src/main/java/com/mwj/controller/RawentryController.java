@@ -153,4 +153,15 @@ public class RawentryController {
 
     }
 
+    @RequestMapping("verifyByEntry.do")
+    public  String lastVerrify(@RequestParam("entryNumber") String entryNumber,Model model){
+
+        final List<Map> mapList = rawentryService.showVeryRawentry(entryNumber);
+
+        model.addAttribute("entrymap",mapList);
+        return
+                "Raw/RawEntry/verifyRawEntry";
+
+    }
+
 }

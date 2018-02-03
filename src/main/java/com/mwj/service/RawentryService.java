@@ -6,6 +6,9 @@ import com.mwj.model.Rawentry;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +21,8 @@ public class RawentryService {
 
     //增加入库信息
     public  boolean addRawentry(Rawentry record){
+
+        record.setEntrynum(RawentryService.getRawentryId());
 
         return  rawentryDao.addRawentry(record);
 
@@ -44,5 +49,20 @@ public class RawentryService {
     public  List<Map> allRawentry(){
 
         return  rawentryDao.allRawentry();
+    }
+
+    //审核信息
+    public  List<Map> showVeryRawentry(String veryEntryNumber){
+
+        return  rawentryDao.showVeryRawentry(veryEntryNumber);
+    }
+
+    public  static String getRawentryId(){
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
+        String tempDate = dateFormat.format(date);
+        String rawentryId = "RK" + tempDate;
+        return  rawentryId;
+
     }
 }

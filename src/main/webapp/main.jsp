@@ -177,7 +177,7 @@
         </div> <!-- sidebar end -->
         <div id="primary_right">
             <div class="inner">
-                <iframe id="iframepage" name="iframepage" src="welcome.jsp" frameBorder="0" scrolling="yes" height="760" width="950">
+                <iframe id="iframepage" name="iframepage" src="welcome.jsp" frameBorder="0" scrolling="yes" height="850" width="1020">
                 </iframe>
             </div>
         </div>

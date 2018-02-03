@@ -94,10 +94,11 @@ jQuery(document).ready(function() {
 		modal:true,
 		buttons: {
 			"Done": function() {
+                dataseq++;
 				var number = jQuery( "#number" ),
 			weight = jQuery( "#weight" );
 				jQuery( "#users tbody" ).append( "<tr>" +
-					"<td><input type='text' style='border: none' value="+number.val()+" name='sequence'></td>" +
+					"<td><input type='text' style='border: none' value="+dataseq+" name='sequence'></td>" +
 							"<td><input type='text' style='border: none' value="+weight.val()+" name='checkweight'><td><a href='#' title='Edit this user' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Pencil.png' alt='' width='16' height='16' /></a><a href='#' title='Preferences' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Preferences.png' alt='' /></a><a href='#' title='Delete this user' class='tooltip table_icon'><img src='../../assets/icons/actions_small/Trash.png' alt='' /></a></td>"+"</tr>" );
 		jQuery(".tooltip").easyTooltip({
 		xOffset: -60,

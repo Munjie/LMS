@@ -21,10 +21,10 @@
 
  <insert id="addRawtobacco"  parameterType="com.mwj.model.Rawtobacco" >
      <selectKey keyProperty="id"  resultType="java.lang.Integer" >
-         select TOC_SEQ.NEXTVAL-1 FROM  dual
+         select ALLTABLE_SEQ.NEXTVAL-1 FROM  dual
      </selectKey>
     insert into RAWTOBACCO (ID, LEVEL_, PRODUCINGYEAR,PRODUCINGAREA, TOBACCOCATEGORY)
-    values (TOC_SEQ.NEXTVAL, #{level}, #{producingyear},
+    values (ALLTABLE_SEQ.NEXTVAL, #{level}, #{producingyear},
       #{producingarea}, #{tobaccocategory})
 
  </insert>

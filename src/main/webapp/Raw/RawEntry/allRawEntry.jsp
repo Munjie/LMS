@@ -68,7 +68,7 @@
             <td>${verify.OPERTERNAME}</td>
             <td>${verify.LOCATIONNAME}</td>
             <td><fmt:formatDate value="${verify.ENTRYDATE}" pattern="yyyy-MM-dd"></fmt:formatDate> </td>
-            <td><a href="" title="Edit this user" class="tooltip table_icon"><img src="../../assets/icons/actions_small/Pencil.png" alt="" width="16" height="16" /></a></td>
+            <td><a href="verifyByEntry.do?entryNumber=${verify.ENTRYNUM}" title="Edit this user" class="tooltip table_icon"><img src="../../assets/icons/actions_small/Pencil.png" alt="" width="16" height="16" /></a></td>
         </tr>
         </c:forEach>
         </tbody>

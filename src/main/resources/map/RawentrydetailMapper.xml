@@ -24,7 +24,7 @@
     insert into RAWENTRYDETAIL (ID, ENTRYINFO, RAWCHECK, 
       AMOUNT, STANDARD_, WEIGHT, 
       LOCATION_)
-    values (RAWENTRYDETAIL_SEQ.NEXTVAL, #{entryinfo,jdbcType=DECIMAL}, #{rawcheck,jdbcType=DECIMAL},
+    values (ALLTABLE_SEQ.NEXTVAL, #{entryinfo,jdbcType=DECIMAL}, #{rawcheck,jdbcType=DECIMAL},
       #{amount,jdbcType=FLOAT}, #{standard,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, 
       #{location,jdbcType=DECIMAL})
   </insert>

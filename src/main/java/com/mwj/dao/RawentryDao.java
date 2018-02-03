@@ -45,6 +45,10 @@ public class RawentryDao {
 
         return  rawentryMapper.allRawentry();
     }
+    //审核信息
+    public  List<Map> showVeryRawentry(String veryEntryNumber){
 
+        return  rawentryMapper.showVeryRawentry(veryEntryNumber);
+    }
 
 }

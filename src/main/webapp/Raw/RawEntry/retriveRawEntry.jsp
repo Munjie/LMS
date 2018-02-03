@@ -49,7 +49,7 @@
         <input class="sf" name="entrynum" type="text"  />
         <span class="field_desc"></span>
         <%--<a class="button_link dialog_link">查询</a>--%>
-        <input type="submit" value="OK">
+        <input type="submit" value="查询">
         </form>
     </p>
     <table id="t1" class="normal fullwidth tablesorter">

@@ -6,6 +6,9 @@ import com.mwj.model.Rawcheck;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +21,7 @@ public class RawcheckService {
     //新增抽检
     public  boolean  addRocheck(Rawcheck record){
 
-
+     record.setChecknum(RawcheckService.getRawCheckId());
      return  rawcheckDao.addRocheck(record);
 
 
@@ -47,5 +50,13 @@ public class RawcheckService {
         return rawcheckDao.queryRawChcekId(checknum);
     }
 
+   public  static String getRawCheckId(){
 
+       Date date = new Date();
+       DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
+       String tempDate = dateFormat.format(date);
+       String racheckId = "CJ" + tempDate;
+       return  racheckId;
+
+   }
 }

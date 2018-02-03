@@ -58,6 +58,7 @@ WHERE rc.checknum = #{checkNumber}
   WHERE RD.ENTRYINFO =(SELECT DISTINCT RD.ENTRYINFO FROM RAWENTRY RE JOIN RAWENTRYDETAIL RD ON RE.ID = RD.ENTRYINFO
   WHERE RE.ENTRYNUM = #{entryNumber})
   </select>
+
     <select id="allRawentry" resultType="java.util.Map">
 
  SELECT RE.ID,RE.ENTRYNUM,DECOM.NAME_ DELIVERYCOMPANYNAME,CLCOM.NAME_ CLIENTNAME,RE.CARNUM,
@@ -73,16 +74,29 @@ WHERE rc.checknum = #{checkNumber}
 
     </select>
 
+    <select id="showVeryRawentry" resultType="java.util.Map" parameterType="java.lang.String">
+       SELECT RE.ID,RE.ENTRYNUM,DECOM.NAME_ DELIVERYCOMPANYNAME,CLCOM.NAME_ CLIENTNAME,RE.CARNUM,
+ RE.PRODUCINGYEAR,US.NAME_ OPERTERNAME,PA.NAME_ PRODUCINGAREA,RE.ENTRYDATE,SL.NAME_ LOCATIONNAME,VE.FLAG
+ FROM RAWENTRY RE
+ JOIN COMPANY DECOM ON DECOM.ID = RE.DELIVERYCOMPANY
+ JOIN COMPANY CLCOM ON CLCOM.ID = RE.CLIENT
+ JOIN VERIFYINFO VE ON RE.ID = VE.RAW_ENTRY_ID
+ JOIN USERS US ON US.ID = RE.OPERATOR_
+ JOIN STORAGELOCATION SL ON SL.ID = RE.STORAGELOCATIONID
+ JOIN PRODUCINGAREA PA ON PA.ID = RE.PRODUCINGAREA
+  WHERE RE.ENTRYNUM = #{veryEntryNumber}
+    </select>
+
   <insert id="addRawentry" parameterType="com.mwj.model.Rawentry" >
 
     <selectKey keyProperty="id"  resultType="java.lang.Integer" >
-      select RAWENTRY_SEQ.NEXTVAL-1 FROM  dual
+      select ALLTABLE_SEQ.NEXTVAL-1 FROM  dual
     </selectKey>
     insert into RAWENTRY (ID, ENTRYNUM, ENTRYDATE, 
       DELIVERYCOMPANY, CLIENT, CARNUM, 
       OPERATOR_, STORAGELOCATIONID, PRODUCINGYEAR, 
       PRODUCINGAREA)
-    values (RAWENTRY_SEQ.NEXTVAL, #{entrynum,jdbcType=VARCHAR}, #{entrydate,jdbcType=TIMESTAMP},
+    values (ALLTABLE_SEQ.NEXTVAL, #{entrynum,jdbcType=VARCHAR}, #{entrydate,jdbcType=TIMESTAMP},
       #{deliverycompany,jdbcType=DECIMAL}, #{client,jdbcType=DECIMAL}, #{carnum,jdbcType=VARCHAR}, 
       #{operator,jdbcType=DECIMAL}, #{storagelocationid,jdbcType=DECIMAL}, #{producingyear,jdbcType=DECIMAL}, 
       #{producingarea,jdbcType=DECIMAL})

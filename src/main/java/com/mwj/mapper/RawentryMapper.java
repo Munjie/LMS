@@ -17,4 +17,6 @@ public interface RawentryMapper {
     List<Map> showRawentrySheet(String entryNumber);
    //入库审核显示
     List<Map> allRawentry();
+   //审核信息
+    List<Map> showVeryRawentry(String veryEntryNumber);
 }

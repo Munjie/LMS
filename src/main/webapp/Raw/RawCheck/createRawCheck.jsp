@@ -43,11 +43,11 @@
 <form action="addRawtobacco.do" method="post" id="rawform">
 <fieldset>
     <h1>新增抽检</h1>
-    <p>
+   <%-- <p>
         <label>抽检单号</label>
         <input class="sf" name="checknum" type="text"  />
         <span class="field_desc">Field description</span>
-    </p>
+    </p>--%>
     <p>
         <label>发货单位</label>
         <select name="deliverycompany" class="dropdown">
@@ -123,10 +123,10 @@
     <p><a class="button_link CRCdialog_link">添加明细</a>	</p>
     <div id="CRCdialog" title="添加明细">
 
-            <p>
+           <%-- <p>
                 <label for="name">序号</label>
                 <input type="text" name="sequence" id="number"  />
-            </p>
+            </p>--%>
             <p>
                 <label for="email">重量</label>
                 <input type="text" name="checkweight" id="weight" value=""  />
@@ -144,7 +144,7 @@
         </thead>
         <tbody>
         <tr>
-            <td>3John Doe</td>
+            <td>3John</td>
             <td>john.doe@example.com</td>
             <td>
                 <a href="#" title="Edit this user" class="tooltip table_icon">

@@ -23,11 +23,11 @@
   </select>
   <insert id="addRocheck" parameterType="com.mwj.model.Rawcheck" >
     <selectKey keyProperty="id"  resultType="java.lang.Integer" >
-      select ROWCHK_SEQ.NEXTVAL-1 FROM  dual
+      select ALLTABLE_SEQ.NEXTVAL-1 FROM  dual
     </selectKey>
 
     insert into RAWCHECK (ID, CODE, DELIVERYCOMPANY,CLIENT, CARNUM, RAWTOBACCO,CHECKNUM, CHECKDATE, OPERATOR_)
-    values (ROWCHK_SEQ.NEXTVAL, #{code,jdbcType=VARCHAR}, #{deliverycompany,jdbcType=DECIMAL},
+    values (ALLTABLE_SEQ.NEXTVAL, #{code,jdbcType=VARCHAR}, #{deliverycompany,jdbcType=DECIMAL},
       #{client,jdbcType=DECIMAL}, #{carnum,jdbcType=VARCHAR}, #{rawtobacco,jdbcType=DECIMAL},
       #{checknum,jdbcType=VARCHAR}, #{checkdate,jdbcType=TIMESTAMP}, #{operator,jdbcType=DECIMAL}
       )
